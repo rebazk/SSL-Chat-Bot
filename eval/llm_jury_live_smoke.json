@@ -1,0 +1,167 @@
+{
+  "input_results_md": "eval\\manualscoring1_postfix_results.md",
+  "mock": false,
+  "models": [
+    "openai/gpt-4o-mini"
+  ],
+  "jury_size": 3,
+  "summary": {
+    "questions_judged": 2,
+    "avg_answer_quality": 5,
+    "avg_grounding_quality": 5,
+    "avg_helpfulness": 5,
+    "major_issue_count": 0,
+    "sc1_pass": 2,
+    "sc1_fail": 0,
+    "sc2_pass": 2,
+    "sc2_fail": 0
+  },
+  "rows": [
+    {
+      "question_id": "p2q01",
+      "question": "What is the Sustainable Solutions Lab, and what does it focus on?",
+      "category": "overview",
+      "question_type": "topic_discovery",
+      "institute_workflow": "lab overview",
+      "pipeline_flags": {
+        "expected_support": "supported",
+        "answer_support_status": "supported",
+        "citation_requirement_met": "yes",
+        "support_expectation_matched": "yes",
+        "preferred_source_hit": "yes"
+      },
+      "aggregate": {
+        "answer_quality_avg": 5,
+        "grounding_quality_avg": 5,
+        "helpfulness_avg": 5,
+        "answer_quality_median": 5,
+        "grounding_quality_median": 5,
+        "helpfulness_median": 5,
+        "sc1_pass": "Pass",
+        "sc2_pass": "Pass",
+        "citation_ok": true,
+        "major_issue": false
+      },
+      "judgments": [
+        {
+          "juror": 1,
+          "persona": "source_grounding_judge",
+          "model": "openai/gpt-4o-mini",
+          "raw_response": "{\n  \"answer_quality_1_5\": 5,\n  \"grounding_quality_1_5\": 5,\n  \"helpfulness_1_5\": 5,\n  \"sc1_pass\": \"Pass\",\n  \"sc2_pass\": \"Pass\",\n  \"citation_ok\": true,\n  \"major_issue\": false,\n  \"rationale\": \"The answer accurately reflects the SSL's mission and focus, supported by the provided citation.\",\n  \"recommended_fix\": \"No fix needed; the answer is complete and well-supported.\"\n}",
+          "answer_quality_1_5": 5,
+          "grounding_quality_1_5": 5,
+          "helpfulness_1_5": 5,
+          "sc1_pass": "Pass",
+          "sc2_pass": "Pass",
+          "citation_ok": true,
+          "major_issue": false,
+          "rationale": "The answer accurately reflects the SSL's mission and focus, supported by the provided citation.",
+          "recommended_fix": "No fix needed; the answer is complete and well-supported."
+        },
+        {
+          "juror": 2,
+          "persona": "institute_user_judge",
+          "model": "openai/gpt-4o-mini",
+          "raw_response": "{\n  \"answer_quality_1_5\": 5,\n  \"grounding_quality_1_5\": 5,\n  \"helpfulness_1_5\": 5,\n  \"sc1_pass\": \"Pass\",\n  \"sc2_pass\": \"Pass\",\n  \"citation_ok\": true,\n  \"major_issue\": false,\n  \"rationale\": \"The answer accurately reflects SSL's mission and focus, supported by the provided citation.\",\n  \"recommended_fix\": \"No fix needed; the answer is complete and well-supported.\"\n}",
+          "answer_quality_1_5": 5,
+          "grounding_quality_1_5": 5,
+          "helpfulness_1_5": 5,
+          "sc1_pass": "Pass",
+          "sc2_pass": "Pass",
+          "citation_ok": true,
+          "major_issue": false,
+          "rationale": "The answer accurately reflects SSL's mission and focus, supported by the provided citation.",
+          "recommended_fix": "No fix needed; the answer is complete and well-supported."
+        },
+        {
+          "juror": 3,
+          "persona": "clarity_correctness_judge",
+          "model": "openai/gpt-4o-mini",
+          "raw_response": "{\n  \"answer_quality_1_5\": 5,\n  \"grounding_quality_1_5\": 5,\n  \"helpfulness_1_5\": 5,\n  \"sc1_pass\": \"Pass\",\n  \"sc2_pass\": \"Pass\",\n  \"citation_ok\": true,\n  \"major_issue\": false,\n  \"rationale\": \"The answer accurately reflects the reference and provides a clear overview of SSL's mission and focus.\",\n  \"recommended_fix\": \"No fix needed; the answer is complete and well-supported.\"\n}",
+          "answer_quality_1_5": 5,
+          "grounding_quality_1_5": 5,
+          "helpfulness_1_5": 5,
+          "sc1_pass": "Pass",
+          "sc2_pass": "Pass",
+          "citation_ok": true,
+          "major_issue": false,
+          "rationale": "The answer accurately reflects the reference and provides a clear overview of SSL's mission and focus.",
+          "recommended_fix": "No fix needed; the answer is complete and well-supported."
+        }
+      ]
+    },
+    {
+      "question_id": "p2q02",
+      "question": "According to the SSL materials, what are some climate-related concerns or priorities raised by Boston communities of color?",
+      "category": "community_factual",
+      "question_type": "factual_lookup",
+      "institute_workflow": "community climate concerns",
+      "pipeline_flags": {
+        "expected_support": "supported",
+        "answer_support_status": "supported",
+        "citation_requirement_met": "yes",
+        "support_expectation_matched": "yes",
+        "preferred_source_hit": "yes"
+      },
+      "aggregate": {
+        "answer_quality_avg": 5,
+        "grounding_quality_avg": 5,
+        "helpfulness_avg": 5,
+        "answer_quality_median": 5,
+        "grounding_quality_median": 5,
+        "helpfulness_median": 5,
+        "sc1_pass": "Pass",
+        "sc2_pass": "Pass",
+        "citation_ok": true,
+        "major_issue": false
+      },
+      "judgments": [
+        {
+          "juror": 1,
+          "persona": "source_grounding_judge",
+          "model": "openai/gpt-4o-mini",
+          "raw_response": "{\n  \"answer_quality_1_5\": 5,\n  \"grounding_quality_1_5\": 5,\n  \"helpfulness_1_5\": 5,\n  \"sc1_pass\": \"Pass\",\n  \"sc2_pass\": \"Pass\",\n  \"citation_ok\": true,\n  \"major_issue\": false,\n  \"rationale\": \"The answer accurately reflects SSL materials and cites specific pages, addressing community concerns effectively.\",\n  \"recommended_fix\": \"No fix needed; the answer is well-supported and useful.\"\n}",
+          "answer_quality_1_5": 5,
+          "grounding_quality_1_5": 5,
+          "helpfulness_1_5": 5,
+          "sc1_pass": "Pass",
+          "sc2_pass": "Pass",
+          "citation_ok": true,
+          "major_issue": false,
+          "rationale": "The answer accurately reflects SSL materials and cites specific pages, addressing community concerns effectively.",
+          "recommended_fix": "No fix needed; the answer is well-supported and useful."
+        },
+        {
+          "juror": 2,
+          "persona": "institute_user_judge",
+          "model": "openai/gpt-4o-mini",
+          "raw_response": "```json\n{\n  \"answer_quality_1_5\": 5,\n  \"grounding_quality_1_5\": 5,\n  \"helpfulness_1_5\": 5,\n  \"sc1_pass\": \"Pass\",\n  \"sc2_pass\": \"Pass\",\n  \"citation_ok\": true,\n  \"major_issue\": false,\n  \"rationale\": \"The answer accurately summarizes SSL findings and cites specific reports, making it useful for users.\",\n  \"recommended_fix\": \"None needed; the answer is comprehensive and well-supported.\"\n}\n```",
+          "answer_quality_1_5": 5,
+          "grounding_quality_1_5": 5,
+          "helpfulness_1_5": 5,
+          "sc1_pass": "Pass",
+          "sc2_pass": "Pass",
+          "citation_ok": true,
+          "major_issue": false,
+          "rationale": "The answer accurately summarizes SSL findings and cites specific reports, making it useful for users.",
+          "recommended_fix": "None needed; the answer is comprehensive and well-supported."
+        },
+        {
+          "juror": 3,
+          "persona": "clarity_correctness_judge",
+          "model": "openai/gpt-4o-mini",
+          "raw_response": "```json\n{\n  \"answer_quality_1_5\": 5,\n  \"grounding_quality_1_5\": 5,\n  \"helpfulness_1_5\": 5,\n  \"sc1_pass\": \"Pass\",\n  \"sc2_pass\": \"Pass\",\n  \"citation_ok\": true,\n  \"major_issue\": false,\n  \"rationale\": \"The answer accurately summarizes community concerns and cites relevant SSL materials.\",\n  \"recommended_fix\": \"No fix needed; the response is clear and well-supported.\"\n}\n```",
+          "answer_quality_1_5": 5,
+          "grounding_quality_1_5": 5,
+          "helpfulness_1_5": 5,
+          "sc1_pass": "Pass",
+          "sc2_pass": "Pass",
+          "citation_ok": true,
+          "major_issue": false,
+          "rationale": "The answer accurately summarizes community concerns and cites relevant SSL materials.",
+          "recommended_fix": "No fix needed; the response is clear and well-supported."
+        }
+      ]
+    }
+  ]
+}

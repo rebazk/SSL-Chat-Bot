@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beacon BOT Evaluation Visuals</title>
+  <style>
+    :root {
+      --bg: #f3eee4;
+      --paper: #fffdf9;
+      --ink: #16323a;
+      --muted: #5a6b73;
+      --line: #ddd3c1;
+      --deep: #0f4f5f;
+      --teal: #167286;
+      --teal-soft: #dceef2;
+      --green: #739764;
+      --gold: #d4a051;
+      --coral: #c96d59;
+      --rose: #b65e78;
+      --shadow: 0 22px 56px rgba(22, 50, 58, 0.11);
+      --benchmark-plot-height: 190px;
+      --benchmark-top-label: 26px;
+      --benchmark-x-label: 42px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(22, 114, 134, 0.08), transparent 28%),
+        linear-gradient(180deg, #eef4ef 0%, var(--bg) 50%, #f2ede2 100%);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.45;
+      padding: 30px 18px 48px;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid rgba(22, 50, 58, 0.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      overflow-y: visible;
+    }
+
+    .hero {
+      padding: 40px 42px 28px;
+      background:
+        radial-gradient(circle at top right, rgba(22, 114, 134, 0.16), transparent 32%),
+        linear-gradient(135deg, #f8fbfa 0%, #f5efe3 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font: 700 12px/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 2.45rem;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 74ch;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .hero-notes {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(22, 50, 58, 0.08);
+      color: var(--deep);
+      font: 600 0.9rem/1.1 Arial, Helvetica, sans-serif;
+    }
+
+    .section {
+      padding: 30px 42px;
+      border-bottom: 1px solid rgba(221, 211, 193, 0.72);
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.45rem;
+      line-height: 1.12;
+    }
+
+    .scorecards {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .scorecard {
+      position: relative;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(22, 50, 58, 0.08);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,252,246,0.98) 100%);
+      overflow: hidden;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .scorecard::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--teal);
+    }
+
+    .scorecard-label {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font: 700 12px/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scorecard-value {
+      margin: 0;
+      font-size: 2.3rem;
+      line-height: 1;
+      color: var(--deep);
+      font-weight: 700;
+    }
+
+    .scorecard-sub {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      overflow-wrap: anywhere;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 22px;
+    }
+
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid rgba(22, 50, 58, 0.08);
+      border-radius: 22px;
+      padding: 22px 22px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,251,244,0.98) 100%);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .panel h3 {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+    }
+
+    .panel p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .benchmark-stage {
+      position: relative;
+      padding: 8px 0 2px;
+      overflow-x: auto;
+      overflow-y: visible;
+      max-width: 100%;
+    }
+
+    .benchmark-svg {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .track {
+      height: 11px;
+      border-radius: 999px;
+      background: #ece5d9;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 18px;
+      font: 600 0.85rem/1.2 Arial, Helvetica, sans-serif;
+      color: var(--muted);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+
+    .composition-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .donut-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .donut {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(22, 50, 58, 0.06);
+    }
+
+    .donut::after {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: 0 0 0 1px rgba(22, 50, 58, 0.04);
+    }
+
+    .donut-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .donut-total {
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--deep);
+    }
+
+    .donut-label {
+      margin-top: 6px;
+      font: 700 0.76rem/1.2 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .stacked-legend,
+    .bucket-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stack-row,
+    .bucket-item,
+    .source-row {
+      display: grid;
+      gap: 5px;
+    }
+
+    .stack-head,
+    .bucket-head,
+    .source-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      font: 600 0.9rem/1.2 Arial, Helvetica, sans-serif;
+    }
+
+    .stack-label,
+    .bucket-label,
+    .source-label {
+      color: var(--ink);
+    }
+
+    .stack-value,
+    .bucket-value,
+    .source-value {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .stack-note,
+    .bucket-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .bucket-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #ece5d9;
+      overflow: hidden;
+    }
+
+    .bucket-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--coral) 100%);
+    }
+
+    .source-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .takeaway {
+      border: 1px solid rgba(22, 50, 58, 0.08);
+      border-radius: 20px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, #f8fbfb 0%, #f9f2e8 100%);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .takeaway h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .takeaway p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .metrics-table-wrap {
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .metrics-table {
+      width: 100%;
+      border-collapse: collapse;
+      font: 0.92rem/1.35 Arial, Helvetica, sans-serif;
+    }
+
+    .metrics-table th,
+    .metrics-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(22, 50, 58, 0.08);
+      vertical-align: top;
+    }
+
+    .metrics-table th {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .metrics-table td.num {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .metrics-table caption {
+      caption-side: bottom;
+      padding-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .load-error {
+      display: none;
+      margin: 0 42px 24px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 109, 89, 0.45);
+      background: rgba(201, 109, 89, 0.08);
+      color: var(--deep);
+      font: 0.95rem/1.45 Arial, Helvetica, sans-serif;
+    }
+
+    .load-error.visible {
+      display: block;
+    }
+
+    .load-error code {
+      font-size: 0.88em;
+    }
+
+    .priority-note {
+      margin: 0 0 14px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    #text-metrics-section .scorecards {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    #text-metrics-section .scorecard-value {
+      font-size: 1.85rem;
+    }
+
+    .text-metrics-guide {
+      margin: 0 0 22px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(22, 50, 58, 0.08);
+      background: linear-gradient(135deg, #f8fbfb 0%, #f9f2e8 100%);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .text-metrics-guide h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .text-metrics-guide ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .text-metrics-guide li + li {
+      margin-top: 6px;
+    }
+
+    .text-metrics-guide .scale-callout {
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(22, 114, 134, 0.08);
+      border-left: 4px solid var(--teal);
+      font-size: 0.94rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .provenance ul {
+      margin: 8px 0 0;
+      padding-left: 1.25rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .provenance li {
+      margin-bottom: 4px;
+    }
+
+    .metrics-table th a {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(22, 114, 134, 0.35);
+    }
+
+    .metrics-table th a:hover {
+      color: var(--deep);
+      border-bottom-color: rgba(15, 79, 95, 0.5);
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+
+    @media print {
+      @page {
+        margin: 0.55in;
+      }
+
+      body {
+        background: #ffffff;
+        padding: 0;
+        color: #1d3138;
+        font-size: 11pt;
+      }
+
+      .page {
+        max-width: none;
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        overflow: visible;
+      }
+
+      .hero {
+        padding: 0 0 16px;
+        background: #ffffff;
+        border-bottom: 1px solid #cfd7da;
+      }
+
+      .section {
+        padding: 18px 0;
+        border-bottom: 1px solid #d9dee0;
+      }
+
+      .pill {
+        background: transparent;
+        border: 1px solid #bfcbd0;
+        color: #2e4f59;
+      }
+
+      h1 {
+        font-size: 24pt;
+        margin-bottom: 8px;
+      }
+
+      .lead {
+        max-width: none;
+        font-size: 11pt;
+      }
+
+      h2 {
+        font-size: 15pt;
+      }
+
+      .scorecards {
+        gap: 10px;
+      }
+
+      .scorecard,
+      .panel,
+      .takeaway {
+        background: #ffffff;
+        border-color: #d6dddf;
+        border-radius: 12px;
+      }
+
+      .scorecard {
+        padding: 12px 12px 10px;
+      }
+
+      .scorecard::before {
+        width: 4px;
+      }
+
+      .scorecard-value {
+        font-size: 20pt;
+      }
+
+      .scorecard-sub,
+      .panel p,
+      .takeaway p,
+      .stack-note,
+      .bucket-note,
+      .footer {
+        font-size: 9.5pt;
+      }
+
+      .panel {
+        padding: 14px 14px 12px;
+      }
+
+      .legend {
+        margin-top: 12px;
+        font-size: 8.5pt;
+      }
+
+      .benchmark-stage {
+        padding-top: 6px;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .scorecards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .coverage-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 12px 8px 26px;
+      }
+
+      .hero,
+      .section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .scorecards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .composition-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .scorecards {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .benchmark-stage {
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="load-error" id="metrics-load-error" role="alert"></div>
+    <section class="hero">
+      <p class="eyebrow">Beacon BOT Evaluation</p>
+      <h1>Metrics Snapshot and Visual Story</h1>
+      <p class="lead">
+        A presentation-ready view of Beacon BOT's current corpus scope, benchmark performance,
+        reference-aligned text metrics (ROUGE, BERTScore, token F1), evaluation-set composition,
+        and remaining failure modes for the SSL chatbot checkpoint.
+      </p>
+      <div class="hero-notes">
+        <span class="pill">Citation-first retrieval baseline</span>
+        <span class="pill">Public SSL corpus only</span>
+        <span class="pill" id="snapshot-pill">Snapshot: loading…</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>At a Glance</h2>
+      </div>
+      <div class="scorecards" id="scorecards"></div>
+    </section>
+
+    <section class="section" id="live-multiturn-section" style="display: none">
+      <div class="section-head">
+        <h2>Live API session (multiturn probe)</h2>
+      </div>
+      <p class="priority-note">
+        Pass rate, guardrail checks, and latency from <code>src/run_multiturn_regression.py</code> against a running Beacon
+        server. Merge results with <code>python src/build_eval_metrics.py</code> (see footer for <code>file://</code> embed refresh).
+      </p>
+      <div class="scorecards" id="live-multiturn-scorecards"></div>
+      <div class="panel" id="live-latency-panel" style="margin-top: 18px">
+        <h3>Request latency (successful calls)</h3>
+        <p>Milliseconds from POST start until JSON is parsed. Failed requests are excluded from latency bars.</p>
+        <div class="benchmark-stage">
+          <svg
+            id="latency-chart"
+            class="benchmark-svg"
+            width="560"
+            height="160"
+            viewBox="0 0 560 160"
+            overflow="visible"
+            role="img"
+            aria-label="Latency bars for p50 mean and p95"
+          ></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="regression-coverage-section" style="display: none">
+      <div class="section-head">
+        <h2>Multiturn and regression specs</h2>
+      </div>
+      <p class="priority-note">
+        Structure of the JSON specs (not pass/fail). Multiturn outcomes appear in <strong>Live API session (multiturn probe)</strong> when
+        <code>live_multiturn</code> is merged into the snapshot.
+      </p>
+      <div class="coverage-grid" id="regression-coverage-root"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Benchmark Performance</h2>
+      </div>
+      <div class="panel">
+        <h3>Benchmark Comparison</h3>
+        <p>Three core metrics across the four headline suites: official demo, expanded coverage, all-PDF coverage, and the Phase 2 candidate set.</p>
+        <div class="benchmark-stage">
+          <svg
+            id="benchmark-chart"
+            class="benchmark-svg"
+            width="980"
+            height="360"
+            viewBox="0 0 980 360"
+            overflow="visible"
+            role="img"
+            aria-label="Benchmark comparison chart"
+          ></svg>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><span class="swatch" style="background: var(--teal)"></span>Citation rate</span>
+          <span class="legend-item"><span class="swatch" style="background: var(--green)"></span>Support / refusal accuracy</span>
+          <span class="legend-item"><span class="swatch" style="background: var(--gold)"></span>Preferred source hit</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="text-metrics-section" style="display: none">
+      <div class="section-head">
+        <h2>Reference-aligned text quality</h2>
+      </div>
+      <p class="priority-note" id="text-metrics-note"></p>
+      <div class="text-metrics-guide">
+        <h3>What these metrics show</h3>
+        <ul>
+          <li>
+            <strong>ROUGE (1 / 2 / L) F1:</strong> N-gram overlap with the reference answer—similar wording and structure score higher.
+            Correct paraphrases can still look weaker than near-copy text.
+          </li>
+          <li>
+            <strong>BERTScore F1:</strong> Similarity in a contextual embedding space—often higher than ROUGE when the answer means the same thing
+            but uses different words.
+          </li>
+          <li>
+            <strong>Token F1:</strong> Overlap of content words after light normalization—a straightforward lexical match between reference and model answer.
+          </li>
+          <li>
+            <strong>Not shown here:</strong> Citation presence, support vs. refusal rubric, preferred-source rank, or factual correctness. Those come from
+            the benchmark sections above and from human review.
+          </li>
+        </ul>
+        <p class="scale-callout">
+          <strong>Scale (0–1 and percent):</strong> Each bar is a <strong>mean F1 in [0, 1]</strong> (already normalized). The chart axis uses
+          <strong>0–100%</strong> as the same value × 100—for example 0.914 reads as 91.4% on the scale. That is a <strong>similarity readout</strong>, not
+          “percent of questions correct” or exam accuracy. Exact-match scores are usually near zero because references are short gold summaries, not
+          verbatim targets.
+        </p>
+      </div>
+      <div class="scorecards" id="text-metrics-scorecards"></div>
+      <div class="panel" style="margin-top: 22px">
+        <h3>Metric comparison (mean F1; axis as % of scale)</h3>
+        <p>
+          Each cluster compares evaluation sets on the same automatic text metrics produced by
+          <code>src/eval_text_metrics.py</code>. Values are macro means over questions with both a reference answer and a model answer. Bar labels use
+          four-digit F1; the vertical axis is F1 × 100 (percentage-style).
+        </p>
+        <div class="benchmark-stage">
+          <svg
+            id="text-metrics-chart"
+            class="benchmark-svg"
+            width="960"
+            height="320"
+            viewBox="0 0 960 320"
+            overflow="visible"
+            role="img"
+            aria-label="Text metrics comparison chart"
+          ></svg>
+        </div>
+        <div class="legend" id="text-metrics-legend"></div>
+      </div>
+    </section>
+
+    <section class="section" id="hallucination-proxy-section">
+      <div class="section-head">
+        <h2>Hallucination and grounding (rubric proxies)</h2>
+      </div>
+      <p class="priority-note">
+        Fully automatic hallucination labels are not available here. Instead we show conservative <strong>benchmark rubric</strong> signals:
+        whether each question’s <strong>supported vs. unsupported</strong> outcome matched the answer key, and how many <strong>citation</strong>
+        requirements were missed on supported-looking items. High alignment and zero gaps are necessary but not sufficient for “no
+        hallucination.”
+      </p>
+      <div class="scorecards" id="hallucination-scorecards"></div>
+      <div class="panel" style="margin-top: 18px">
+        <h3>Support rubric: aligned vs. miss (by headline suite)</h3>
+        <p>
+          Green is the share of questions where <strong>support expectation matched</strong> the key. Coral is the remainder (wrong
+          support flag or refusal vs. key). These misses can indicate unsupported claims or incorrect refusals, either of which can look
+          like “hallucination” or unsafe behavior to users.
+        </p>
+        <div class="benchmark-stage">
+          <svg
+            id="hallucination-chart"
+            class="benchmark-svg"
+            width="720"
+            height="220"
+            viewBox="0 0 720 220"
+            overflow="visible"
+            role="img"
+            aria-label="Support alignment versus rubric misses by benchmark"
+          ></svg>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><span class="swatch" style="background: var(--green)"></span>Support key matched</span>
+          <span class="legend-item"><span class="swatch" style="background: var(--coral)"></span>Rubric miss (risk signal)</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="other-eval-section">
+      <div class="section-head">
+        <h2>Other Evaluation Sets</h2>
+      </div>
+      <div class="panel">
+        <h3>Supplementary benchmarks</h3>
+        <p>Counts mirror <code>eval/metrics_snapshot.json</code>; update the snapshot after benchmark reruns.</p>
+        <div class="metrics-table-wrap">
+          <table class="metrics-table" id="other-eval-table" aria-describedby="other-eval-caption">
+            <caption id="other-eval-caption">Result logs live under <code>eval/</code> as generated markdown.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Set</th>
+                <th scope="col">Questions</th>
+                <th scope="col">Citations (met / required)</th>
+                <th scope="col">Support match</th>
+                <th scope="col">Preferred source</th>
+              </tr>
+            </thead>
+            <tbody id="other-eval-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <section class="panel">
+          <h3>Phase 2 candidate mix (32)</h3>
+          <p>Question-type taxonomy in <code>eval/phase2_eval_32_candidate.json</code>. Coverage of multiturn and tricky regression JSON specs is in <strong>Multiturn and regression specs</strong>.</p>
+          <div class="composition-layout">
+            <div class="donut-wrap">
+              <div class="donut" id="question-donut">
+                <div class="donut-center">
+                  <div class="donut-total" id="donut-total">32</div>
+                  <div class="donut-label">Eval Questions</div>
+                </div>
+              </div>
+            </div>
+            <div class="stacked-legend" id="question-breakdown"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Corpus composition</h3>
+          <p>Current public SSL source mix used by Beacon BOT.</p>
+          <div class="source-grid" id="corpus-breakdown"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <section class="panel">
+          <h3>Remaining Failure Modes</h3>
+          <p>Qualitative priority areas from the current failure-analysis notes.</p>
+          <p class="priority-note" id="failure-score-note"></p>
+          <div class="bucket-list" id="failure-buckets"></div>
+        </section>
+
+        <section class="takeaway">
+          <h3>Takeaway</h3>
+          <p id="takeaway-text"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="section footer">
+      <strong>Snapshot date:</strong> <span id="snapshot-date"></span><br />
+      <strong>Data file:</strong> <code>eval/metrics_snapshot.json</code> when served over HTTP; the same snapshot is embedded for <code>file://</code>. After hand-editing JSON, run <code>py docs/regenerate_metrics_embed.py</code>. Running <code>py src/build_eval_metrics.py</code> merges live multiturn metrics and recomputes regression spec coverage, then refreshes the embed.<br />
+      <div class="provenance" id="provenance-block">
+        <strong>Provenance and logs:</strong>
+        <ul id="provenance-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Offline fallback (file:// cannot fetch JSON). Mirror eval/metrics_snapshot.json; run py docs/regenerate_metrics_embed.py after editing that file. -->
+  <script type="application/json" id="metrics-embedded">{"snapshot_date":"2026-05-11","corpus":{"total_sources":20,"pdfs":15,"webpage_snapshots":5,"duplicates_skipped":1,"searchable_chunks":2354},"benchmarks":[{"id":"phase1_demo","label":"Official 10-question","total_questions":10,"expected_supported":10,"expected_unsupported":0,"answers_marked_supported":10,"citation_requirement_satisfied":10,"citation_required_total":10,"support_expectation_matched":10,"preferred_source_hit":10,"preferred_source_applicable_total":10},{"id":"coverage_50","label":"Expanded 50-question","total_questions":50,"expected_supported":49,"expected_unsupported":1,"answers_marked_supported":49,"citation_requirement_satisfied":49,"citation_required_total":49,"support_expectation_matched":50,"preferred_source_hit":50,"preferred_source_applicable_total":50},{"id":"all_pdfs","label":"All-PDF coverage","total_questions":53,"expected_supported":52,"expected_unsupported":1,"answers_marked_supported":52,"citation_requirement_satisfied":52,"citation_required_total":52,"support_expectation_matched":53,"preferred_source_hit":53,"preferred_source_applicable_total":53},{"id":"phase2_candidate","label":"Phase 2 candidate (32)","total_questions":32,"expected_supported":31,"expected_unsupported":1,"answers_marked_supported":31,"citation_requirement_satisfied":31,"citation_required_total":31,"support_expectation_matched":32,"preferred_source_hit":31,"preferred_source_applicable_total":31}],"other_eval_sets":[{"label":"Partner review","results_path":"eval/phase2_partner_review_questions_18_results.md","total_questions":18,"citation_requirement_satisfied":17,"citation_required_total":18,"support_expectation_matched":17,"support_total":18,"preferred_source_hit":null,"preferred_source_applicable_total":null,"note":"One row can reflect benchmark metadata (for example expected_support defaults) rather than answer quality alone."},{"label":"Multi-document (10)","results_path":"eval/multi_doc_eval_10_results.md","total_questions":10,"citation_requirement_satisfied":10,"citation_required_total":10,"support_expectation_matched":10,"support_total":10,"preferred_source_hit":10,"preferred_source_applicable_total":10},{"label":"Multi-document hard (8)","results_path":"eval/multi_doc_eval_hard_8_results.md","total_questions":8,"citation_requirement_satisfied":6,"citation_required_total":6,"support_expectation_matched":8,"support_total":8,"preferred_source_hit":6,"preferred_source_applicable_total":6},{"label":"Regression / tricky prompts","results_path":"eval/regression_tricky_prompts_results.md","total_questions":7,"citation_requirement_satisfied":6,"citation_required_total":6,"support_expectation_matched":7,"support_total":7,"preferred_source_hit":6,"preferred_source_applicable_total":6}],"phase2_question_type_counts":[{"label":"Topic discovery","count":15},{"label":"Factual lookup","count":14},{"label":"Ambiguous","count":2},{"label":"Out of scope","count":1}],"failure_buckets":[{"label":"Broad synthesis","score":5,"note":"Multi-document questions are still weaker than direct factual lookup."},{"label":"OCR and extractive noise","score":3,"note":"Difficult PDF pages still need monitoring, but sparse-PDF fallback indexing now recovers the migration paper that had been dropping citations."},{"label":"Summary vs full report ambiguity","score":3,"note":"Executive summaries can outrank fuller reports when a question needs precision."},{"label":"Unsupported query handling","score":2,"note":"Refusal behavior is much stronger now, but it still needs to stay visible in evaluation."},{"label":"Website coverage limits","score":3,"note":"The web corpus is curated and useful, but still narrower than the full SSL public site."}],"failure_score_note":"Bar lengths use relative priority scores (1 to 5) for qualitative planning, not calibrated engineering metrics.","takeaway_closing":"The next quality step is keeping these gains stable with automated tests and periodic benchmark reruns rather than chasing one-off extraction fixes.","live_multiturn":{"generated_at":"2026-05-13T16:52:20Z","base_url":"http://127.0.0.1:8765","input":"eval/multiturn_regression_sample.json","results_md":"eval/multiturn_regression_results.md","total_checks":26,"passed":26,"failed":0,"pass_rate":1.0,"elapsed_sec":29.77,"latency_ms":{"mean":1145.12,"p50":1067.25,"p95":2853.53,"min":4.31,"max":5100.07},"latency_sample_count":26,"guardrail_turns":1,"guardrail_passed":1,"http_errors":0,"notes":"Latency is round-trip POST /api/ask until JSON parse succeeds; excludes failed requests."},"text_metrics":{"runs":[{"id":"phase2_eval_32_candidate","label":"Phase 2 candidate (32)","metrics_json":"eval/text_metrics_phase2_eval_32_candidate.json","summary":{"count":32,"rouge1_f1":0.5136,"rouge2_f1":0.2671,"rougeL_f1":0.4166,"bertscore_f1":0.9138,"exact_match":0.0,"token_f1":0.4854}},{"id":"question_coverage_50","label":"Expanded coverage (50)","metrics_json":"eval/text_metrics_question_coverage_50.json","summary":{"count":50,"rouge1_f1":0.4632,"rouge2_f1":0.22,"rougeL_f1":0.3707,"bertscore_f1":0.9049,"exact_match":0.0,"token_f1":0.4364}}]},"sources":["eval/metrics_snapshot.json","eval/phase1_metrics.md","eval/phase1_demo_questions_results.md","eval/question_coverage_50_results.md","eval/question_coverage_all_pdfs_results.md","eval/phase2_eval_32_candidate.json","eval/phase2_eval_32_candidate_results.md","eval/phase2_partner_review_questions_18_results.md","eval/multi_doc_eval_10_results.md","eval/multi_doc_eval_hard_8_results.md","eval/regression_tricky_prompts_results.md","eval/multiturn_metrics.json","docs/failure_analysis.md","eval/multiturn_regression_sample.json","eval/regression_tricky_prompts.json","eval/text_metrics_phase2_eval_32_candidate.json","eval/text_metrics_question_coverage_50.json"],"regression_coverage":{"multiturn_spec":"eval/multiturn_regression_sample.json","multiturn":{"chains":[{"id":"chain_focus_funding","label":"Focus \u2192 funding follow-ups","turns":3,"guardrail_turns":0},{"id":"chain_focus_alt_phrasing","label":"Short focus \u2192 grants","turns":2,"guardrail_turns":0},{"id":"chain_director","label":"Director phrasing variants","turns":3,"guardrail_turns":0},{"id":"chain_staff_roles","label":"Staff and roles (deep chain)","turns":11,"guardrail_turns":0},{"id":"chain_wording_variants","label":"Casual / lowercase phrasing","turns":4,"guardrail_turns":0},{"id":"chain_oos_then_recover","label":"OOS guardrail \u2192 recovery","turns":3,"guardrail_turns":1}],"totals":{"chains":6,"turns":26,"guardrail_turns":1,"content_checks":25}},"tricky_prompts_spec":"eval/regression_tricky_prompts.json","tricky_prompts":{"total":7,"by_bucket":[{"label":"Expected refusal / OOS","count":4},{"label":"Factual / web lookup","count":2},{"label":"Broad synthesis","count":1}]}}}</script>
+
+  <script>
+    let metrics = null;
+
+    async function loadMetricsSnapshot() {
+      const bases = [
+        new URL("../eval/metrics_snapshot.json", window.location.href),
+        new URL("eval/metrics_snapshot.json", window.location.href)
+      ];
+      for (const url of bases) {
+        try {
+          const response = await fetch(url.href);
+          if (response.ok) {
+            return await response.json();
+          }
+        } catch (err) {
+          /* try next */
+        }
+      }
+      const embedded = document.getElementById("metrics-embedded");
+      if (embedded) {
+        const raw = embedded.textContent.trim();
+        if (raw) {
+          try {
+            return JSON.parse(raw);
+          } catch (parseErr) {
+            throw new Error("Embedded metrics JSON is invalid: " + parseErr.message);
+          }
+        }
+      }
+      throw new Error("metrics_snapshot.json was not reachable and no embedded snapshot was available");
+    }
+
+    function showLoadError(err) {
+      const pill = document.getElementById("snapshot-pill");
+      if (pill) pill.textContent = "Snapshot: not loaded";
+      const banner = document.getElementById("metrics-load-error");
+      banner.classList.add("visible");
+      banner.innerHTML =
+        "<strong>Could not load metrics data.</strong> The embedded snapshot and <code>fetch</code> to <code>eval/metrics_snapshot.json</code> both failed. " +
+        "Confirm <code>docs/metrics_visuals.html</code> still contains the <code>id=\"metrics-embedded\"</code> block, or serve from the repo root " +
+        "(<code>py -m http.server</code> or <code>py src/serve_ui.py</code>) so JSON can load live. " +
+        `<span style="display:block;margin-top:8px;font-size:0.9em;">(${String(err && err.message ? err.message : err)})</span>`;
+    }
+
+    function pctValue(numerator, denominator) {
+      if (!denominator) return 0;
+      return (numerator / denominator) * 100;
+    }
+
+    function buildTakeaway(data) {
+      const bench = data.benchmarks || [];
+      const names = bench.map((b) => b.label).join(", ");
+      const headlineAllGood = bench.every((b) => {
+        const c = pctValue(b.citation_requirement_satisfied, b.citation_required_total) >= 99.5;
+        const s = pctValue(b.support_expectation_matched, b.total_questions) >= 99.5;
+        const t = b.preferred_source_applicable_total;
+        const p = !t || pctValue(b.preferred_source_hit, t) >= 99.5;
+        return c && s && p;
+      });
+
+      let text = headlineAllGood
+        ? `Across the four headline suites (${names}), citation requirements, support expectations, and preferred-source targets are satisfied at 100% where the rubric applies.`
+        : `Headline suites (${names}) are strong overall; scan the chart above for any bar below 100% and read the corresponding results log for detail.`;
+
+      const other = data.other_eval_sets || [];
+      const imperfect = other.filter((row) => {
+        const cr = row.citation_required_total;
+        const cs = row.citation_requirement_satisfied;
+        const st = row.support_total;
+        const sm = row.support_expectation_matched;
+        const citGap = cr && typeof cs === "number" && cs < cr;
+        const supGap = st && typeof sm === "number" && sm < st;
+        const ph = row.preferred_source_hit;
+        const pa = row.preferred_source_applicable_total;
+        const prefGap = pa && typeof ph === "number" && ph < pa;
+        return citGap || supGap || prefGap;
+      });
+
+      if (imperfect.length) {
+        text +=
+          " Supplementary sets with at least one rubric gap: " +
+          imperfect.map((r) => r.label).join(", ") +
+          ". See table notes and the linked markdown logs.";
+      } else if (other.length) {
+        text += " Supplementary evaluation sets in the table below align with the headline story for the current snapshot.";
+      }
+
+      if (data.takeaway_closing) {
+        text += " " + data.takeaway_closing;
+      }
+
+      const tm = data.text_metrics;
+      const tmRuns = tm && Array.isArray(tm.runs) ? tm.runs : [];
+      if (tmRuns.length) {
+        const bits = tmRuns
+          .map((r) => {
+            const s = r.summary || {};
+            const n = s.count;
+            const b = typeof s.bertscore_f1 === "number" ? Math.round(s.bertscore_f1 * 1000) / 1000 : null;
+            return b != null ? `${r.label}: BERTScore F1 ${b} (${n} items)` : r.label;
+          })
+          .join("; ");
+        text += ` Reference-aligned text metrics: ${bits}.`;
+      }
+
+      const live = data.live_multiturn;
+      if (live && typeof live.total_checks === "number" && live.total_checks > 0) {
+        const pr = Math.round((live.pass_rate || 0) * 1000) / 10;
+        const lat = live.latency_ms || {};
+        text += ` Live multiturn probe: ${live.passed}/${live.total_checks} checks (${pr}% pass).`;
+        if (live.latency_sample_count > 0 && typeof lat.mean === "number") {
+          text += ` Mean API latency ${lat.mean} ms (p95 ${lat.p95} ms).`;
+        }
+        if (live.guardrail_turns > 0) {
+          text += ` Guardrail expectations met ${live.guardrail_passed}/${live.guardrail_turns}.`;
+        }
+      }
+
+      let supTot = 0;
+      let supMiss = 0;
+      let citGap = 0;
+      bench.forEach((b) => {
+        const t = b.total_questions || 0;
+        const m = b.support_expectation_matched || 0;
+        supTot += t;
+        supMiss += Math.max(0, t - m);
+        const cr = b.citation_required_total || 0;
+        const cs = b.citation_requirement_satisfied || 0;
+        if (cr > 0) citGap += Math.max(0, cr - cs);
+      });
+      if (supTot > 0) {
+        const align = Math.round(((supTot - supMiss) / supTot) * 1000) / 10;
+        text += ` Rubric proxy for grounding: ${align}% support-key alignment across headline suites (${supMiss} miss${supMiss === 1 ? "" : "es"}).`;
+        if (citGap > 0) {
+          text += ` Citation requirement gaps on supported items: ${citGap}.`;
+        }
+      }
+
+      return text;
+    }
+
+    function renderOtherEvalTable(data) {
+      const section = document.getElementById("other-eval-section");
+      const tbody = document.getElementById("other-eval-tbody");
+      const rows = data.other_eval_sets || [];
+      if (!section || !tbody) return;
+      if (!rows.length) {
+        section.style.display = "none";
+        return;
+      }
+      section.style.display = "";
+      tbody.innerHTML = "";
+      rows.forEach((row) => {
+        const tr = document.createElement("tr");
+        const th = document.createElement("th");
+        th.scope = "row";
+        const path = row.results_path || "";
+        if (path) {
+          const link = document.createElement("a");
+          link.href = new URL("../" + path.replace(/\\/g, "/"), window.location.href).href;
+          link.textContent = row.label;
+          th.appendChild(link);
+        } else {
+          th.textContent = row.label;
+        }
+        if (row.note) {
+          const aside = document.createElement("div");
+          aside.className = "bucket-note";
+          aside.style.marginTop = "6px";
+          aside.textContent = row.note;
+          th.appendChild(aside);
+        }
+        const tdN = document.createElement("td");
+        tdN.className = "num";
+        tdN.textContent = String(row.total_questions);
+        const tdC = document.createElement("td");
+        tdC.className = "num";
+        tdC.textContent = `${row.citation_requirement_satisfied}/${row.citation_required_total}`;
+        const tdS = document.createElement("td");
+        tdS.className = "num";
+        tdS.textContent = `${row.support_expectation_matched}/${row.support_total}`;
+        const tdP = document.createElement("td");
+        tdP.className = "num";
+        tdP.textContent =
+          row.preferred_source_applicable_total == null
+            ? "—"
+            : `${row.preferred_source_hit}/${row.preferred_source_applicable_total}`;
+        tr.appendChild(th);
+        tr.appendChild(tdN);
+        tr.appendChild(tdC);
+        tr.appendChild(tdS);
+        tr.appendChild(tdP);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderProvenance(data) {
+      const list = document.getElementById("provenance-list");
+      if (!list) return;
+      list.innerHTML = "";
+      (data.sources || []).forEach((src) => {
+        const li = document.createElement("li");
+        const code = document.createElement("code");
+        code.textContent = src;
+        li.appendChild(code);
+        list.appendChild(li);
+      });
+    }
+
+    function clearDynamicSections() {
+      [
+        "scorecards",
+        "live-multiturn-scorecards",
+        "hallucination-scorecards",
+        "question-breakdown",
+        "corpus-breakdown",
+        "regression-coverage-root",
+        "failure-buckets",
+        "other-eval-tbody",
+        "text-metrics-scorecards",
+        "text-metrics-legend"
+      ].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = "";
+      });
+      const noteTm = document.getElementById("text-metrics-note");
+      if (noteTm) noteTm.textContent = "";
+      const latSvg = document.getElementById("latency-chart");
+      if (latSvg) latSvg.innerHTML = "";
+      const hallSvg = document.getElementById("hallucination-chart");
+      if (hallSvg) hallSvg.innerHTML = "";
+      const tmSvg = document.getElementById("text-metrics-chart");
+      if (tmSvg) tmSvg.innerHTML = "";
+    }
+
+    function renderAll(data) {
+      metrics = data;
+      clearDynamicSections();
+      renderScorecards();
+      renderLiveMultiturn(data);
+      renderBenchmarkChart();
+      renderTextMetrics(data);
+      renderHallucinationProxies(data);
+      renderQuestionDonut();
+      renderCorpusBreakdown();
+      renderRegressionCoverage(data);
+      renderFailureBuckets();
+      renderOtherEvalTable(data);
+      renderProvenance(data);
+      renderFooterAndTakeaway(data);
+    }
+
+    async function bootstrap() {
+      try {
+        const data = await loadMetricsSnapshot();
+        document.getElementById("metrics-load-error").classList.remove("visible");
+        renderAll(data);
+      } catch (err) {
+        showLoadError(err);
+      }
+    }
+
+    const colorFallbacks = {
+      "--teal": "#167286",
+      "--green": "#739764",
+      "--gold": "#d4a051",
+      "--coral": "#c96d59",
+      "--rose": "#b65e78"
+    };
+
+    function getCSS(name) {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      if (raw) return raw;
+      return colorFallbacks[name] || "";
+    }
+
+    const colors = {
+      teal: getCSS("--teal"),
+      green: getCSS("--green"),
+      gold: getCSS("--gold"),
+      coral: getCSS("--coral"),
+      rose: getCSS("--rose")
+    };
+
+    function pct(numerator, denominator) {
+      if (!denominator) return 0;
+      return (numerator / denominator) * 100;
+    }
+
+    function formatPct(value) {
+      return `${Math.round(value)}%`;
+    }
+
+    function makeTrack(width, color) {
+      const track = document.createElement("div");
+      track.className = "track";
+      const fill = document.createElement("div");
+      fill.className = "fill";
+      fill.style.width = `${Math.max(0, Math.min(100, width))}%`;
+      fill.style.background = color;
+      track.appendChild(fill);
+      return track;
+    }
+
+    function renderLiveMultiturn(data) {
+      const section = document.getElementById("live-multiturn-section");
+      const cardsRoot = document.getElementById("live-multiturn-scorecards");
+      const svg = document.getElementById("latency-chart");
+      if (!section || !cardsRoot || !svg) return;
+      const lm = data.live_multiturn;
+      if (!lm || typeof lm.total_checks !== "number" || lm.total_checks < 1) {
+        section.style.display = "none";
+        return;
+      }
+      section.style.display = "";
+      const latPanel = document.getElementById("live-latency-panel");
+      if (latPanel) {
+        latPanel.style.display = (lm.latency_sample_count || 0) > 0 ? "" : "none";
+      }
+      const pr = Math.round((lm.pass_rate || 0) * 1000) / 10;
+      const lat = lm.latency_ms || {};
+      const cardSpecs = [
+        { label: "Multiturn pass rate", value: `${pr}%`, note: `${lm.passed}/${lm.total_checks} checks` },
+        { label: "Mean latency", value: `${lat.mean ?? 0} ms`, note: "Successful POST /api/ask" },
+        { label: "P95 latency", value: `${lat.p95 ?? 0} ms`, note: "Tail UX budget" },
+        {
+          label: "Guardrail checks",
+          value: (lm.guardrail_turns || 0) === 0 ? "—" : `${lm.guardrail_passed ?? 0}/${lm.guardrail_turns ?? 0}`,
+          note: (lm.guardrail_turns || 0) === 0 ? "No guardrail-only turns in this spec" : "Expected OOS / PII denials"
+        },
+        { label: "HTTP / parse errors", value: String(lm.http_errors ?? 0), note: "Failed requests this run" }
+      ];
+      cardSpecs.forEach((card) => {
+        const node = document.createElement("article");
+        node.className = "scorecard";
+        node.innerHTML = `
+          <p class="scorecard-label">${card.label}</p>
+          <p class="scorecard-value">${card.value}</p>
+          <p class="scorecard-sub">${card.note}</p>
+        `;
+        cardsRoot.appendChild(node);
+      });
+
+      const NS = "http://www.w3.org/2000/svg";
+      svg.innerHTML = "";
+      if ((lm.latency_sample_count || 0) < 1) {
+        return;
+      }
+      const p50 = Number(lat.p50) || 0;
+      const mean = Number(lat.mean) || 0;
+      const p95 = Number(lat.p95) || 0;
+      const maxVal = Math.max(p50, mean, p95, 1);
+      const barW = 360;
+      const left = 120;
+      const rows = [
+        { label: "p50", val: p50, color: colors.teal },
+        { label: "Mean", val: mean, color: colors.green },
+        { label: "p95", val: p95, color: colors.gold }
+      ];
+      rows.forEach((row, i) => {
+        const y = 28 + i * 44;
+        const text = document.createElementNS(NS, "text");
+        text.setAttribute("x", "8");
+        text.setAttribute("y", String(y + 22));
+        text.setAttribute("fill", "var(--ink)");
+        text.setAttribute("font-size", "14");
+        text.setAttribute("font-family", "Arial, Helvetica, sans-serif");
+        text.textContent = row.label;
+        svg.appendChild(text);
+        const track = document.createElementNS(NS, "rect");
+        track.setAttribute("x", String(left));
+        track.setAttribute("y", String(y));
+        track.setAttribute("width", String(barW));
+        track.setAttribute("height", "22");
+        track.setAttribute("rx", "8");
+        track.setAttribute("fill", "rgba(22, 114, 134, 0.08)");
+        svg.appendChild(track);
+        const fill = document.createElementNS(NS, "rect");
+        fill.setAttribute("x", String(left));
+        fill.setAttribute("y", String(y));
+        fill.setAttribute("width", String((row.val / maxVal) * barW));
+        fill.setAttribute("height", "22");
+        fill.setAttribute("rx", "8");
+        fill.setAttribute("fill", row.color);
+        svg.appendChild(fill);
+        const cap = document.createElementNS(NS, "text");
+        cap.setAttribute("x", String(left + barW + 10));
+        cap.setAttribute("y", String(y + 16));
+        cap.setAttribute("fill", "var(--muted)");
+        cap.setAttribute("font-size", "13");
+        cap.setAttribute("font-family", "Arial, Helvetica, sans-serif");
+        cap.textContent = `${Math.round(row.val)} ms`;
+        svg.appendChild(cap);
+      });
+      svg.setAttribute("viewBox", "0 0 560 160");
+      svg.setAttribute("width", "560");
+      svg.setAttribute("overflow", "visible");
+    }
+
+    function renderHallucinationProxies(data) {
+      const cardsRoot = document.getElementById("hallucination-scorecards");
+      const svg = document.getElementById("hallucination-chart");
+      const section = document.getElementById("hallucination-proxy-section");
+      if (!cardsRoot || !svg || !section) return;
+
+      const bench = data.benchmarks || [];
+      cardsRoot.innerHTML = "";
+      if (!bench.length) {
+        section.style.display = "none";
+        return;
+      }
+      section.style.display = "";
+
+      let supTot = 0;
+      let supMiss = 0;
+      let citReq = 0;
+      let citGap = 0;
+      bench.forEach((b) => {
+        const t = b.total_questions || 0;
+        const m = b.support_expectation_matched || 0;
+        supTot += t;
+        supMiss += Math.max(0, t - m);
+        const cr = b.citation_required_total || 0;
+        const cs = b.citation_requirement_satisfied || 0;
+        citReq += cr;
+        if (cr > 0) citGap += Math.max(0, cr - cs);
+      });
+
+      const alignPct = supTot ? Math.round(((supTot - supMiss) / supTot) * 1000) / 10 : 0;
+      const citGapPct = citReq ? Math.round((citGap / citReq) * 1000) / 10 : 0;
+
+      [
+        {
+          label: "Support-key alignment",
+          value: `${alignPct}%`,
+          note: `${supTot - supMiss}/${supTot} headline questions match supported vs. unsupported vs. key`
+        },
+        {
+          label: "Rubric misses (support)",
+          value: String(supMiss),
+          note: "Mismatched support flag vs. benchmark (conservative grounding-risk signal)"
+        },
+        {
+          label: "Citation gaps",
+          value: citGap === 0 ? "0" : `${citGap} (${citGapPct}%)`,
+          note: "Required citations not met on rubric-supported items"
+        }
+      ].forEach((card) => {
+        const node = document.createElement("article");
+        node.className = "scorecard";
+        node.innerHTML = `
+          <p class="scorecard-label">${card.label}</p>
+          <p class="scorecard-value">${card.value}</p>
+          <p class="scorecard-sub">${card.note}</p>
+        `;
+        cardsRoot.appendChild(node);
+      });
+
+      const NS = "http://www.w3.org/2000/svg";
+      svg.innerHTML = "";
+      const labelMax = 168;
+      const left = labelMax + 8;
+      const barW = 320;
+      const rowH = 44;
+      const viewPadRight = 88;
+      bench.forEach((b, i) => {
+        const t = b.total_questions || 0;
+        const m = b.support_expectation_matched || 0;
+        const y = 10 + i * rowH;
+        const lab = document.createElementNS(NS, "text");
+        lab.setAttribute("x", "4");
+        lab.setAttribute("y", String(y + 24));
+        lab.setAttribute("fill", "var(--ink)");
+        lab.setAttribute("font-size", "12");
+        lab.setAttribute("font-family", "Arial, Helvetica, sans-serif");
+        const raw = String(b.label || b.id || "");
+        lab.textContent = raw.length > 26 ? raw.slice(0, 24) + "…" : raw;
+        svg.appendChild(lab);
+
+        const track = document.createElementNS(NS, "rect");
+        track.setAttribute("x", String(left));
+        track.setAttribute("y", String(y));
+        track.setAttribute("width", String(barW));
+        track.setAttribute("height", "28");
+        track.setAttribute("rx", "8");
+        track.setAttribute("fill", "rgba(201, 109, 89, 0.15)");
+        svg.appendChild(track);
+
+        const alignW = t > 0 ? (m / t) * barW : 0;
+        const fill = document.createElementNS(NS, "rect");
+        fill.setAttribute("x", String(left));
+        fill.setAttribute("y", String(y));
+        fill.setAttribute("width", String(alignW));
+        fill.setAttribute("height", "28");
+        fill.setAttribute("rx", "8");
+        fill.setAttribute("fill", colors.green);
+        svg.appendChild(fill);
+
+        const cap = document.createElementNS(NS, "text");
+        cap.setAttribute("x", String(left + barW + 10));
+        cap.setAttribute("y", String(y + 20));
+        cap.setAttribute("fill", "var(--muted)");
+        cap.setAttribute("font-size", "12");
+        cap.setAttribute("font-family", "Arial, Helvetica, sans-serif");
+        cap.textContent = t ? `${m}/${t}` : "—";
+        svg.appendChild(cap);
+      });
+
+      const sh = Math.max(160, 24 + bench.length * rowH);
+      const viewW = left + barW + viewPadRight;
+      svg.setAttribute("width", String(viewW));
+      svg.setAttribute("height", String(sh));
+      svg.setAttribute("viewBox", `0 0 ${viewW} ${sh}`);
+      svg.setAttribute("overflow", "visible");
+    }
+
+    function renderScorecards() {
+      const phase2 = metrics.benchmarks.find((item) => item.id === "phase2_candidate");
+      const cards = [
+        {
+          label: "Public sources",
+          value: metrics.corpus.total_sources,
+          note: `${metrics.corpus.pdfs} PDFs and ${metrics.corpus.webpage_snapshots} curated web snapshots`
+        },
+        {
+          label: "Searchable chunks",
+          value: metrics.corpus.searchable_chunks.toLocaleString(),
+          note: "Retrieval passages available to the current backend"
+        },
+        {
+          label: "Phase 2 eval set",
+          value: phase2.total_questions,
+          note: "Candidate questions for the April checkpoint packet"
+        },
+        {
+          label: "Support / refusal",
+          value: `${phase2.support_expectation_matched}/${phase2.total_questions}`,
+          note: "Phase 2 candidate support-expectation match"
+        },
+        {
+          label: "Citation rate",
+          value: `${phase2.citation_requirement_satisfied}/${phase2.citation_required_total}`,
+          note: "Citation requirement satisfied on the Phase 2 set"
+        }
+      ];
+
+      const container = document.getElementById("scorecards");
+      cards.forEach((card) => {
+        const node = document.createElement("article");
+        node.className = "scorecard";
+        node.innerHTML = `
+          <p class="scorecard-label">${card.label}</p>
+          <p class="scorecard-value">${card.value}</p>
+          <p class="scorecard-sub">${card.note}</p>
+        `;
+        container.appendChild(node);
+      });
+    }
+
+    function formatF1(v) {
+      if (typeof v !== "number" || Number.isNaN(v)) return "—";
+      return (Math.round(v * 10000) / 10000).toFixed(4).replace(/\.?0+$/, "");
+    }
+
+    function renderTextMetrics(data) {
+      const section = document.getElementById("text-metrics-section");
+      const noteEl = document.getElementById("text-metrics-note");
+      const cardsRoot = document.getElementById("text-metrics-scorecards");
+      const svg = document.getElementById("text-metrics-chart");
+      const leg = document.getElementById("text-metrics-legend");
+      if (!section || !cardsRoot || !svg || !leg) return;
+
+      const tm = data.text_metrics;
+      const runs = tm && Array.isArray(tm.runs) ? tm.runs : [];
+      if (!runs.length) {
+        section.style.display = "none";
+        return;
+      }
+      section.style.display = "";
+      if (noteEl) {
+        noteEl.textContent = tm.note || "";
+      }
+
+      const metricDefs = [
+        { key: "rouge1_f1", label: "ROUGE-1 F1" },
+        { key: "rouge2_f1", label: "ROUGE-2 F1" },
+        { key: "rougeL_f1", label: "ROUGE-L F1" },
+        { key: "bertscore_f1", label: "BERTScore F1" },
+        { key: "token_f1", label: "Token F1" }
+      ];
+
+      const barColors = [colors.teal, colors.rose, colors.gold, colors.coral, colors.green];
+
+      cardsRoot.innerHTML = "";
+      runs.forEach((run, idx) => {
+        const s = run.summary || {};
+        const n = document.createElement("article");
+        n.className = "scorecard";
+        const subParts = metricDefs.map((m) => `${m.label.replace(" F1", "")} ${formatF1(s[m.key])}`);
+        n.innerHTML = `
+          <p class="scorecard-label">${run.label || run.id}</p>
+          <p class="scorecard-value">${s.count != null ? s.count : "—"}<span style="font-size:0.55em;font-weight:600;color:var(--muted)"> questions</span></p>
+          <p class="scorecard-sub">${subParts.join(" · ")}</p>
+          <p class="scorecard-sub"><code>${run.metrics_json || ""}</code></p>
+        `;
+        cardsRoot.appendChild(n);
+      });
+
+      leg.innerHTML = "";
+      runs.forEach((run, idx) => {
+        const span = document.createElement("span");
+        span.className = "legend-item";
+        const sw = document.createElement("span");
+        sw.className = "swatch";
+        sw.style.background = barColors[idx % barColors.length];
+        span.appendChild(sw);
+        span.appendChild(document.createTextNode(run.label || run.id));
+        leg.appendChild(span);
+      });
+
+      const NS = "http://www.w3.org/2000/svg";
+      svg.innerHTML = "";
+      const width = 960;
+      const height = 320;
+      const margin = { top: 28, right: 24, bottom: 56, left: 52 };
+      const plotW = width - margin.left - margin.right;
+      const plotH = height - margin.top - margin.bottom;
+      const baseY = margin.top + plotH;
+      const nG = metricDefs.length;
+      const groupW = plotW / nG;
+      const barW = 26;
+      const innerGap = 8;
+      const nRuns = runs.length;
+
+      function append(parent, tag, attrs = {}, text = null) {
+        const node = document.createElementNS(NS, tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+        if (text !== null) node.textContent = text;
+        parent.appendChild(node);
+        return node;
+      }
+
+      append(svg, "title", {}, "Mean text metric F1 scores by evaluation set");
+      append(
+        svg,
+        "desc",
+        {},
+        "Grouped bars show macro-averaged ROUGE and BERTScore F1 and token F1 for each benchmark result log."
+      );
+
+      [1, 0.75, 0.5, 0.25, 0].forEach((t) => {
+        const y = baseY - t * plotH;
+        append(svg, "line", {
+          x1: margin.left,
+          y1: y,
+          x2: width - margin.right,
+          y2: y,
+          stroke: "rgba(22,50,58,0.12)",
+          "stroke-dasharray": "4 4",
+          "stroke-width": "1"
+        });
+        append(
+          svg,
+          "text",
+          {
+            x: margin.left - 10,
+            y: y + 4,
+            "text-anchor": "end",
+            fill: "#5a6b73",
+            "font-family": "Arial, Helvetica, sans-serif",
+            "font-size": "11",
+            "font-weight": "700"
+          },
+          `${Math.round(t * 100)}%`
+        );
+      });
+
+      append(svg, "line", {
+        x1: margin.left,
+        y1: baseY,
+        x2: width - margin.right,
+        y2: baseY,
+        stroke: "rgba(22,50,58,0.28)",
+        "stroke-width": "2"
+      });
+
+      metricDefs.forEach((md, gi) => {
+        const cx = margin.left + gi * groupW + groupW / 2;
+        const clusterW = nRuns * barW + Math.max(0, nRuns - 1) * innerGap;
+        let x0 = cx - clusterW / 2;
+        runs.forEach((run, ri) => {
+          const s = run.summary || {};
+          const raw = s[md.key];
+          const v = typeof raw === "number" && !Number.isNaN(raw) ? Math.max(0, Math.min(1, raw)) : 0;
+          const bh = v * plotH;
+          const x = x0 + ri * (barW + innerGap);
+          const y = baseY - bh;
+          append(svg, "rect", {
+            x,
+            y,
+            width: barW,
+            height: Math.max(1, bh),
+            rx: "8",
+            ry: "8",
+            fill: barColors[ri % barColors.length],
+            "aria-hidden": "true"
+          });
+          if (bh > 14) {
+            append(
+              svg,
+              "text",
+              {
+                x: x + barW / 2,
+                y: y - 6,
+                "text-anchor": "middle",
+                fill: "#16323a",
+                "font-family": "Arial, Helvetica, sans-serif",
+                "font-size": "11",
+                "font-weight": "700"
+              },
+              formatF1(v)
+            );
+          }
+        });
+
+        const short = md.label.replace(" F1", "");
+        append(
+          svg,
+          "text",
+          {
+            x: cx,
+            y: baseY + 22,
+            "text-anchor": "middle",
+            fill: "#16323a",
+            "font-family": "Georgia, 'Times New Roman', serif",
+            "font-size": "13",
+            "font-weight": "700"
+          },
+          short
+        );
+      });
+
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.setAttribute("width", String(width));
+      svg.setAttribute("height", String(height));
+    }
+
+    function renderBenchmarkChart() {
+      const svg = document.getElementById("benchmark-chart");
+      const shortLabels = {
+        phase1_demo: ["10Q", "Demo"],
+        coverage_50: ["50Q", "Coverage"],
+        all_pdfs: ["All-PDF", "Coverage"],
+        phase2_candidate: ["Phase 2", "Candidate"]
+      };
+      const NS = "http://www.w3.org/2000/svg";
+      const width = 980;
+      const height = 360;
+      const margin = { top: 24, right: 16, bottom: 72, left: 54 };
+      const plotWidth = width - margin.left - margin.right;
+      const plotHeight = height - margin.top - margin.bottom;
+      const groupCount = metrics.benchmarks.length;
+      const groupWidth = plotWidth / groupCount;
+      const barWidth = 48;
+      const barGap = 14;
+      const clusterWidth = barWidth * 3 + barGap * 2;
+      const baseY = margin.top + plotHeight;
+
+      while (svg.firstChild) {
+        svg.removeChild(svg.firstChild);
+      }
+
+      function append(parent, tag, attrs = {}, text = null) {
+        const node = document.createElementNS(NS, tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+        if (text !== null) {
+          node.textContent = text;
+        }
+        parent.appendChild(node);
+        return node;
+      }
+
+      append(svg, "title", {}, "Beacon BOT benchmark comparison by evaluation suite");
+      append(
+        svg,
+        "desc",
+        {},
+        "Each suite is a cluster of three vertical bars: citation requirement satisfaction (teal), support-expectation match (green), and preferred-source hit rate in the top five results (gold). Values are percentages of applicable questions."
+      );
+
+      [100, 75, 50, 25].forEach((tick) => {
+        const y = margin.top + plotHeight - (tick / 100) * plotHeight;
+        append(svg, "line", {
+          x1: margin.left,
+          y1: y,
+          x2: width - margin.right,
+          y2: y,
+          stroke: "rgba(22,50,58,0.14)",
+          "stroke-dasharray": "4 4",
+          "stroke-width": "1"
+        });
+        append(
+          svg,
+          "text",
+          {
+            x: margin.left - 12,
+            y: y + 5,
+            "text-anchor": "end",
+            fill: "#5a6b73",
+            "font-family": "Arial, Helvetica, sans-serif",
+            "font-size": "12",
+            "font-weight": "700"
+          },
+          `${tick}%`
+        );
+      });
+
+      append(svg, "line", {
+        x1: margin.left,
+        y1: baseY,
+        x2: width - margin.right,
+        y2: baseY,
+        stroke: "rgba(22,50,58,0.30)",
+        "stroke-width": "2"
+      });
+
+      metrics.benchmarks.forEach((benchmark, index) => {
+        const values = [
+          pct(benchmark.citation_requirement_satisfied, benchmark.citation_required_total),
+          pct(benchmark.support_expectation_matched, benchmark.total_questions),
+          pct(benchmark.preferred_source_hit, benchmark.preferred_source_applicable_total)
+        ];
+        const colorsForBars = [colors.teal, colors.green, colors.gold];
+        const groupLeft = margin.left + index * groupWidth;
+        const clusterLeft = groupLeft + (groupWidth - clusterWidth) / 2;
+
+        const cluster = append(svg, "g", {
+          role: "group",
+          "aria-label": `${benchmark.label}: citation ${formatPct(values[0])}, support ${formatPct(values[1])}, preferred source ${formatPct(values[2])}`
+        });
+
+        values.forEach((value, barIndex) => {
+          const barHeight = (value / 100) * plotHeight;
+          const x = clusterLeft + barIndex * (barWidth + barGap);
+          const y = baseY - barHeight;
+
+          append(cluster, "rect", {
+            x,
+            y,
+            width: barWidth,
+            height: Math.max(12, barHeight),
+            rx: "10",
+            ry: "10",
+            fill: colorsForBars[barIndex],
+            "aria-hidden": "true"
+          });
+
+          append(
+            cluster,
+            "text",
+            {
+              x: x + barWidth / 2,
+              y: y - 10,
+              "text-anchor": "middle",
+              fill: "#16323a",
+              "font-family": "Arial, Helvetica, sans-serif",
+              "font-size": "12",
+              "font-weight": "700",
+              "aria-hidden": "true"
+            },
+            formatPct(value)
+          );
+        });
+
+        const label = shortLabels[benchmark.id] || [benchmark.label];
+        const text = append(cluster, "text", {
+          x: groupLeft + groupWidth / 2,
+          y: baseY + 24,
+          "text-anchor": "middle",
+          fill: "#16323a",
+          "font-family": "Georgia, 'Times New Roman', serif",
+          "font-size": "16",
+          "font-weight": "700",
+          "aria-hidden": "true"
+        });
+
+        label.forEach((line, lineIndex) => {
+          const tspan = document.createElementNS(NS, "tspan");
+          tspan.setAttribute("x", String(groupLeft + groupWidth / 2));
+          tspan.setAttribute("dy", lineIndex === 0 ? "0" : "18");
+          tspan.textContent = line;
+          text.appendChild(tspan);
+        });
+      });
+    }
+
+    function renderQuestionDonut() {
+      const data = metrics.phase2_question_type_counts;
+      const donut = document.getElementById("question-donut");
+      const totalEl = document.getElementById("donut-total");
+      const breakdown = document.getElementById("question-breakdown");
+      if (!data || !Array.isArray(data) || !data.length || !donut || !totalEl || !breakdown) return;
+
+      const total = data.reduce((sum, item) => sum + item.count, 0);
+      totalEl.textContent = total;
+
+      const palette = [colors.teal, colors.green, colors.gold, colors.coral];
+      let start = 0;
+      const segments = data.map((item, index) => {
+        const share = pct(item.count, total);
+        const end = start + share;
+        const segment = `${palette[index]} ${start}% ${end}%`;
+        start = end;
+        return segment;
+      });
+
+      donut.style.background = `conic-gradient(${segments.join(", ")})`;
+
+      breakdown.innerHTML = "";
+      data.forEach((item, index) => {
+        const share = pct(item.count, total);
+        const row = document.createElement("div");
+        row.className = "stack-row";
+
+        const head = document.createElement("div");
+        head.className = "stack-head";
+        head.innerHTML = `<span class="stack-label">${item.label}</span><span class="stack-value">${item.count} - ${formatPct(share)}</span>`;
+
+        row.appendChild(head);
+        row.appendChild(makeTrack(share, palette[index]));
+        breakdown.appendChild(row);
+      });
+    }
+
+    function renderCorpusBreakdown() {
+      const container = document.getElementById("corpus-breakdown");
+      const total = metrics.corpus.total_sources;
+      const dup = metrics.corpus.duplicates_skipped;
+      const dupLabel = dup === 1 ? "1 source" : `${dup} sources`;
+      const rows = [
+        ["PDFs", `${metrics.corpus.pdfs}/${total} sources`, pct(metrics.corpus.pdfs, total), colors.teal],
+        ["Webpage snapshots", `${metrics.corpus.webpage_snapshots}/${total} sources`, pct(metrics.corpus.webpage_snapshots, total), colors.green],
+        ["Duplicates skipped", dupLabel, pct(metrics.corpus.duplicates_skipped, total), colors.gold]
+      ];
+
+      rows.forEach(([label, value, width, color]) => {
+        const row = document.createElement("div");
+        row.className = "source-row";
+
+        const head = document.createElement("div");
+        head.className = "source-head";
+        head.innerHTML = `<span class="source-label">${label}</span><span class="source-value">${value}</span>`;
+
+        row.appendChild(head);
+        row.appendChild(makeTrack(width, color));
+        container.appendChild(row);
+      });
+    }
+
+    function renderRegressionCoverage(data) {
+      const section = document.getElementById("regression-coverage-section");
+      const root = document.getElementById("regression-coverage-root");
+      if (!section || !root) return;
+      const rc = data.regression_coverage;
+      if (!rc || (!rc.multiturn && !rc.tricky_prompts)) {
+        section.style.display = "none";
+        root.innerHTML = "";
+        return;
+      }
+      section.style.display = "";
+      root.innerHTML = "";
+
+      function makePanel(title, caption, tableHtml) {
+        const wrap = document.createElement("div");
+        wrap.className = "panel";
+        wrap.innerHTML = `<h3>${title}</h3><p>${caption}</p>${tableHtml}`;
+        return wrap;
+      }
+
+      if (rc.multiturn) {
+        const t = rc.multiturn.totals || {};
+        const chains = rc.multiturn.chains || [];
+        const spec = rc.multiturn_spec || "eval/multiturn_regression_sample.json";
+        const body = chains
+          .map(
+            (c) =>
+              `<tr><th scope="row">${c.label}<div class="bucket-note" style="margin-top:4px"><code>${c.id}</code></div></th><td class="num">${c.turns}</td><td class="num">${c.guardrail_turns}</td></tr>`
+          )
+          .join("");
+        const tableFixed = `<div class="metrics-table-wrap"><table class="metrics-table"><thead><tr><th scope="col">Chain</th><th class="num" scope="col">Turns</th><th class="num" scope="col">Guardrail</th></tr></thead><tbody>${body}</tbody><caption>Spec: <code>${spec}</code> — ${t.chains || 0} chains, ${t.turns || 0} turns (${t.guardrail_turns || 0} guardrail, ${t.content_checks != null ? t.content_checks : "—"} content checks).</caption></table></div>`;
+        root.appendChild(
+          makePanel(
+            "Multiturn regression chains",
+            "Each row is one conversation chain in the sample spec.",
+            tableFixed
+          )
+        );
+      }
+
+      if (rc.tricky_prompts) {
+        const tp = rc.tricky_prompts;
+        const spec = rc.tricky_prompts_spec || "eval/regression_tricky_prompts.json";
+        const rows = (tp.by_bucket || [])
+          .map((b) => `<tr><th scope="row">${b.label}</th><td class="num">${b.count}</td></tr>`)
+          .join("");
+        const tableFixed = `<div class="metrics-table-wrap"><table class="metrics-table"><thead><tr><th scope="col">Theme</th><th class="num" scope="col">Prompts</th></tr></thead><tbody>${rows}</tbody><caption>Spec: <code>${spec}</code> — ${tp.total || 0} prompts total.</caption></table></div>`;
+        root.appendChild(
+          makePanel(
+            "Regression / tricky prompts",
+            "Single-turn prompts grouped by evaluation theme.",
+            tableFixed
+          )
+        );
+      }
+    }
+
+    function renderFailureBuckets() {
+      const container = document.getElementById("failure-buckets");
+      metrics.failure_buckets.forEach((bucket) => {
+        const item = document.createElement("div");
+        item.className = "bucket-item";
+
+        const head = document.createElement("div");
+        head.className = "bucket-head";
+        head.innerHTML = `<span class="bucket-label">${bucket.label}</span><span class="bucket-value">Priority ${bucket.score}/5</span>`;
+
+        const track = document.createElement("div");
+        track.className = "bucket-track";
+        const fill = document.createElement("div");
+        fill.className = "bucket-fill";
+        fill.style.width = `${bucket.score * 20}%`;
+        track.appendChild(fill);
+
+        const note = document.createElement("div");
+        note.className = "bucket-note";
+        note.textContent = bucket.note;
+
+        item.appendChild(head);
+        item.appendChild(track);
+        item.appendChild(note);
+        container.appendChild(item);
+      });
+    }
+
+    function renderFooterAndTakeaway(data) {
+      document.getElementById("snapshot-pill").textContent = `Snapshot: ${data.snapshot_date}`;
+      document.getElementById("snapshot-date").textContent = data.snapshot_date;
+      document.getElementById("takeaway-text").textContent = buildTakeaway(data);
+      const noteEl = document.getElementById("failure-score-note");
+      if (noteEl) {
+        noteEl.textContent = data.failure_score_note || "";
+      }
+    }
+
+    bootstrap();
+  </script>
+</body>
+</html>

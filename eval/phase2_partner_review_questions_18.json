@@ -1,0 +1,182 @@
+[
+  {
+    "id": "Q01",
+    "source_question_id": "p2q01",
+    "question_type": "topic_discovery",
+    "institute_workflow": "lab overview",
+    "category": "overview",
+    "question": "What is the Sustainable Solutions Lab, and what does it focus on?",
+    "reference_answer": "SSL is a climate justice-focused institute at UMass Boston that bridges sectors, convenes collaborators, and supports transdisciplinary research and action centered on historically excluded communities facing climate change.",
+    "why_included_for_partner_review": "Core public-facing overview question that checks whether the chatbot represents SSL's mission accurately."
+  },
+  {
+    "id": "Q02",
+    "source_question_id": "p2q03",
+    "question_type": "factual_lookup",
+    "institute_workflow": "report lookup",
+    "category": "report_factual",
+    "question": "What does the report 'Who Counts in Climate Resilience?' identify as the two transient populations it focuses on?",
+    "reference_answer": "The report focuses on people experiencing homelessness and international seasonal H-2B workers.",
+    "why_included_for_partner_review": "Checks whether the system captures a major SSL report accurately and concisely."
+  },
+  {
+    "id": "Q03",
+    "source_question_id": "p2q06",
+    "question_type": "topic_discovery",
+    "institute_workflow": "report comparison",
+    "category": "comparison",
+    "question": "How are 'Voices that Matter' and 'Views that Matter' different in the kind of evidence or perspective they provide?",
+    "reference_answer": "Views that Matter is a survey-based report about Boston-area residents' opinions, while Voices that Matter adds qualitative focus-group evidence from Boston-area residents of color.",
+    "why_included_for_partner_review": "Checks whether the chatbot distinguishes related SSL reports instead of conflating them."
+  },
+  {
+    "id": "Q04",
+    "source_question_id": "p2q07",
+    "question_type": "topic_discovery",
+    "institute_workflow": "place-based resilience",
+    "category": "place_based",
+    "question": "What concerns does the East Boston resilience work raise about climate adaptation, gentrification, and displacement?",
+    "reference_answer": "The East Boston work argues that climate adaptation can interact with gentrification and displacement pressures, so equitable resilience planning needs to address housing, power, and who benefits from adaptation investments.",
+    "why_included_for_partner_review": "Representative place-based question tied to climate justice and equity framing."
+  },
+  {
+    "id": "Q05",
+    "source_question_id": "p2q08",
+    "question_type": "factual_lookup",
+    "institute_workflow": "program overview",
+    "category": "program",
+    "question": "What does the SSL report say about the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston region?",
+    "reference_answer": "The MVP report explains that the program helps municipalities identify vulnerabilities, plan adaptation, and build cross-sector resilience capacity, while also highlighting lessons and equity challenges.",
+    "why_included_for_partner_review": "Good test of whether the chatbot can describe a major SSL program/report for external users."
+  },
+  {
+    "id": "Q06",
+    "source_question_id": "p2q09",
+    "question_type": "ambiguous",
+    "institute_workflow": "broad SSL synthesis",
+    "category": "synthesis",
+    "question": "What has SSL done about climate resilience in Boston?",
+    "reference_answer": "A strong answer should synthesize multiple SSL efforts, such as community-focused research, public reports, and Boston-related governance and financing work, rather than citing only one source.",
+    "why_included_for_partner_review": "Important broad user question that tests whether the answer feels useful rather than overly extractive."
+  },
+  {
+    "id": "Q07",
+    "source_question_id": "p2q10",
+    "question_type": "factual_lookup",
+    "institute_workflow": "contact and people lookup",
+    "category": "website_factual",
+    "question": "Who is the current director of the Sustainable Solutions Lab?",
+    "reference_answer": "The public SSL materials identify B. R. (Balakrishnan) Balachandran as the current director or executive director.",
+    "why_included_for_partner_review": "Straightforward public-facing people question that should be answered cleanly."
+  },
+  {
+    "id": "Q08",
+    "source_question_id": "p2q11",
+    "question_type": "topic_discovery",
+    "institute_workflow": "mission framing",
+    "category": "website_overview",
+    "question": "How does SSL publicly describe its climate justice framing?",
+    "reference_answer": "SSL publicly frames its work as climate justice research and action centered on historically excluded communities and equitable adaptation.",
+    "why_included_for_partner_review": "High-value framing question that tests whether the system preserves SSL's public language and priorities."
+  },
+  {
+    "id": "Q09",
+    "source_question_id": "p2q13",
+    "question_type": "topic_discovery",
+    "institute_workflow": "publication discovery",
+    "category": "website_overview",
+    "question": "What kinds of public materials are available through the SSL ScholarWorks collection?",
+    "reference_answer": "The collection includes public SSL publications such as reports, annual reports, articles, and related research materials.",
+    "why_included_for_partner_review": "Checks publication-discovery value for external users looking for reports or research outputs."
+  },
+  {
+    "id": "Q10",
+    "source_question_id": "p2q14",
+    "question_type": "factual_lookup",
+    "institute_workflow": "project discovery",
+    "category": "website_factual",
+    "question": "What projects or initiatives are highlighted on the SSL projects page?",
+    "reference_answer": "The public projects page highlights initiatives such as the Northeast Climate Justice Research Collaborative, the Climate Adaptation Forum, C3I, the Cape Cod Rail Resilience Project, and CLIIR.",
+    "why_included_for_partner_review": "Useful for checking whether project/page discovery is accurate and helpful."
+  },
+  {
+    "id": "Q11",
+    "source_question_id": "p2q15",
+    "question_type": "factual_lookup",
+    "institute_workflow": "contact lookup",
+    "category": "website_factual",
+    "question": "What phone number is listed for SSL on the public website?",
+    "reference_answer": "The public SSL materials currently include the phone number (617) 297-6630 on the projects page snapshot.",
+    "why_included_for_partner_review": "Simple contact lookup question that is easy for a partner reviewer to validate quickly."
+  },
+  {
+    "id": "Q12",
+    "source_question_id": "p2q18",
+    "question_type": "factual_lookup",
+    "institute_workflow": "report lookup",
+    "category": "community_factual",
+    "question": "What health or air-quality concerns appear in 'Community-Led Climate Preparedness and Resilience in Boston'?",
+    "reference_answer": "The report highlights concerns including asthma, air quality, respiratory impacts, and related health burdens that shape climate preparedness for communities of color.",
+    "why_included_for_partner_review": "Representative report-specific factual question tied to community impacts."
+  },
+  {
+    "id": "Q13",
+    "source_question_id": "p2q19",
+    "question_type": "factual_lookup",
+    "institute_workflow": "community preparedness",
+    "category": "community_factual",
+    "question": "According to 'Voices that Matter,' what preparedness concerns do Boston-area residents of color discuss?",
+    "reference_answer": "The report surfaces preparedness concerns tied to health, infrastructure, institutional responsiveness, and whether communities are adequately supported before and during climate impacts.",
+    "why_included_for_partner_review": "Good check on whether the answer captures community voice rather than just abstract policy language."
+  },
+  {
+    "id": "Q14",
+    "source_question_id": "p2q23",
+    "question_type": "topic_discovery",
+    "institute_workflow": "policy financing",
+    "category": "policy_financing",
+    "question": "How does the financing report organize resilience funding across different scales?",
+    "reference_answer": "The financing report organizes resilience funding across multiple scales such as citywide, district, building, and parcel levels, showing that different tools fit different decision contexts.",
+    "why_included_for_partner_review": "Useful synthesis-style policy question that should still remain understandable to a non-specialist."
+  },
+  {
+    "id": "Q15",
+    "source_question_id": "p2q26",
+    "question_type": "factual_lookup",
+    "institute_workflow": "program overview",
+    "category": "program",
+    "question": "According to the MVP report, what does the Massachusetts Municipal Vulnerability Preparedness Program help municipalities do?",
+    "reference_answer": "The MVP program helps municipalities identify vulnerabilities, plan adaptation responses, and support resilience work across local sectors and communities.",
+    "why_included_for_partner_review": "Clear, stakeholder-friendly program question that should reveal whether answers are plain-language enough."
+  },
+  {
+    "id": "Q16",
+    "source_question_id": "p2q27",
+    "question_type": "topic_discovery",
+    "institute_workflow": "report interpretation",
+    "category": "report_factual",
+    "question": "Why are transient populations often overlooked in climate resilience planning according to 'Who Counts in Climate Resilience'?",
+    "reference_answer": "The report argues that transient populations are often overlooked because planning systems and institutions are not well aligned with the realities, mobility, and support needs of those groups.",
+    "why_included_for_partner_review": "Checks whether the chatbot can explain the meaning of a report, not just restate report facts."
+  },
+  {
+    "id": "Q17",
+    "source_question_id": "p2q30",
+    "question_type": "topic_discovery",
+    "institute_workflow": "regional stakeholder discovery",
+    "category": "regional_planning",
+    "question": "What does 'Connecting for Equitable Climate Adaptation' contribute to understanding Metro Boston climate adaptation stakeholders?",
+    "reference_answer": "The report contributes a stakeholder-mapping view of the Metro Boston adaptation field, showing who is involved, how they relate, and where gaps or silos remain.",
+    "why_included_for_partner_review": "Good test of whether the system can explain a more conceptual stakeholder-mapping contribution clearly."
+  },
+  {
+    "id": "Q18",
+    "source_question_id": "p2q32",
+    "question_type": "out_of_scope",
+    "institute_workflow": "unsupported public query",
+    "category": "out_of_scope",
+    "question": "What is SSL's current annual budget?",
+    "reference_answer": "The system should refuse because the current public SSL corpus does not provide a reliable annual budget figure.",
+    "why_included_for_partner_review": "Important refusal example that lets the partner judge whether unsupported answers are handled safely and clearly."
+  }
+]

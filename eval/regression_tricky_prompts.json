@@ -1,0 +1,58 @@
+[
+  {
+    "id": "rg01",
+    "category": "overview_refusal",
+    "question": "This center seems to be all about climate justice. Why is it called Sustainable Solutions Lab?",
+    "must_include_citation": true,
+    "expected_support": "unsupported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_004"]
+  },
+  {
+    "id": "rg02",
+    "category": "research_focus",
+    "question": "In the last two years, what has been the focus of research at SSL?",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_004", "ssl_web_005", "ssl_web_003"]
+  },
+  {
+    "id": "rg03",
+    "category": "people_lookup",
+    "question": "Who does the research at SSL?",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_004", "ssl_web_003"]
+  },
+  {
+    "id": "rg04",
+    "category": "opportunity_refusal",
+    "question": "Does SSL offer any fellowships or post-doc opportunities?",
+    "must_include_citation": true,
+    "expected_support": "unsupported",
+    "preferred_sources": ["ssl_web_005", "ssl_web_003"]
+  },
+  {
+    "id": "rg05",
+    "category": "opportunity_refusal",
+    "question": "Does SSL hire interns?",
+    "must_include_citation": true,
+    "expected_support": "unsupported",
+    "preferred_sources": ["ssl_web_005", "ssl_web_003"]
+  },
+  {
+    "id": "rg06",
+    "category": "scope_refusal",
+    "question": "Has SSL done anything on waste management or recycling?",
+    "must_include_citation": false,
+    "expected_support": "unsupported",
+    "preferred_sources": []
+  },
+  {
+    "id": "rg07",
+    "category": "synthesis",
+    "question": "Summarize SSL's work in the last five years.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_004", "ssl_web_005", "ssl_pdf_012", "ssl_pdf_015", "ssl_pdf_008", "ssl_pdf_009"]
+  }
+]

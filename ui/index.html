@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beacon BOT | SSL Chatbot Prototype</title>
+  <link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-copy">
+        <p class="eyebrow">UMass Boston x Sustainable Solutions Lab</p>
+        <h1>Beacon BOT</h1>
+        <p class="subhead">A local, citation-first assistant for public SSL questions.</p>
+        <p class="ssl-canonical-ref">
+          <a href="https://www.umb.edu/ssl/" target="_blank" rel="noreferrer noopener">Sustainable Solutions Lab — umb.edu/ssl</a>
+        </p>
+      </div>
+      <img class="umb-lockup" src="/slides/assets/UMASSBOSTON_ID_blue.v2.png" alt="UMass Boston">
+    </header>
+
+    <main class="hero-layout">
+      <section class="hero-copy">
+        <p class="section-label">Prototype direction</p>
+        <h2>Ask grounded questions about SSL work, projects, and public reports.</h2>
+        <p class="lead">
+          This prototype sits on top of the current local retrieval pipeline. It is designed to
+          surface answers, citations, and supporting evidence together rather than hide them behind
+          a chat-only interface.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">Public SSL corpus only</span>
+          <span class="pill">Visible citations</span>
+          <span class="pill">Refusal when support is weak</span>
+        </div>
+
+        <div id="topic-block" class="topic-block" tabindex="-1">
+          <p class="sample-label" id="topic-block-label">Choose a topic</p>
+          <div
+            id="topic-picker"
+            class="topic-row"
+            role="radiogroup"
+            aria-labelledby="topic-block-label"
+            aria-orientation="horizontal"
+            aria-label="Beacon BOT topics"
+          ></div>
+        </div>
+
+        <div class="hero-grid">
+          <article class="info-card">
+            <h3>What Beacon BOT is for</h3>
+            <p>
+              A teammate, faculty mentor, or public visitor can ask direct SSL questions and see
+              what evidence the current corpus actually supports.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>What it shows</h3>
+            <p>
+              Each response includes the answer, source citations, and the top retrieved passages
+              so we can judge grounding and usefulness together.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Why this UI shape</h3>
+            <p>
+              The Beacon BOT launcher keeps the interface lightweight, while the right-side panel gives
+              enough room to show evidence clearly.
+            </p>
+          </article>
+        </div>
+
+        <p class="lead inline-note">
+          Pick a topic above, then use the suggested questions in the panel to move from quick browsing to a full question.
+        </p>
+      </section>
+
+      <aside class="hero-side">
+        <div class="summary-panel">
+          <div class="summary-top">
+            <div>
+              <p class="section-label">Current corpus</p>
+              <h3>Ready for a thin UI layer</h3>
+            </div>
+            <button
+              id="open-panel"
+              class="open-panel"
+              type="button"
+              aria-label="Open Beacon BOT side panel for questions, answers, and evidence"
+            >
+              Open panel
+            </button>
+          </div>
+
+          <dl class="metric-list">
+            <div>
+              <dt>Indexed sources</dt>
+              <dd><span class="metric-value">20</span></dd>
+            </div>
+            <div>
+              <dt id="metric-chunks-label">Searchable chunks</dt>
+              <dd aria-describedby="metric-chunks-hint">
+                <span class="metric-value" aria-labelledby="metric-chunks-label">2354</span>
+                <span id="metric-chunks-hint" class="metric-dfn">Passages in the local retrieval index from the last corpus build.</span>
+              </dd>
+            </div>
+            <div>
+              <dt>Official benchmark</dt>
+              <dd><span class="metric-value">10 / 10</span> <span class="metric-dfn">Citations satisfied</span></dd>
+            </div>
+            <div>
+              <dt>Expanded benchmark</dt>
+              <dd><span class="metric-value">50 / 50</span> <span class="metric-dfn">Expected support match</span></dd>
+            </div>
+          </dl>
+
+          <div class="summary-note">
+            Beacon BOT is intended to stay evidence-forward. If the corpus cannot support a claim
+            reliably, the interface should show that clearly instead of improvising.
+          </div>
+
+          <div class="summary-cta">
+            <button id="beacon-launcher" class="beacon-launcher" type="button" aria-label="Open Beacon BOT: ask questions and inspect citations and evidence">
+              <span class="beacon-icon" aria-hidden="true">
+                <img class="beacon-mark-image" src="/ui/assets/umass-boston-new-emblem-cmyk.jpg" alt="">
+              </span>
+              <span class="beacon-launcher-text">
+                <span class="beacon-launcher-title">Beacon BOT</span>
+                <span class="beacon-launcher-sub">Ask questions · citations · evidence</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div id="panel-backdrop" class="panel-backdrop" hidden></div>
+
+  <aside id="beacon-panel" class="beacon-panel" aria-hidden="true" aria-labelledby="beacon-panel-title">
+    <div class="panel-header">
+      <div class="panel-brand">
+        <span class="beacon-icon small" aria-hidden="true">
+          <img class="beacon-mark-image" src="/ui/assets/umass-boston-new-emblem-cmyk.jpg" alt="">
+        </span>
+        <div>
+          <p class="section-label">Beacon BOT</p>
+          <h3 id="beacon-panel-title">Ask the public SSL corpus</h3>
+        </div>
+      </div>
+      <button id="close-panel" class="close-panel" type="button" aria-label="Close Beacon BOT">&times;</button>
+    </div>
+
+    <form id="ask-form" class="ask-form">
+      <label class="sr-only" for="question-input">Ask a question</label>
+      <textarea id="question-input" name="question" rows="2" maxlength="400" placeholder="Start with a suggested question or ask an SSL-related question..." required></textarea>
+      <div class="question-meta" aria-live="polite">
+        <span class="question-hint">Press Enter to ask. Suggested questions are the most reliable starting point for review.</span>
+        <span id="question-counter" class="question-counter">0 / 400</span>
+      </div>
+      <div class="form-actions">
+        <div id="question-chips" class="question-chips" aria-label="Suggested questions"></div>
+        <button
+          id="submit-question"
+          class="submit-button"
+          type="submit"
+          aria-label="Ask the SSL corpus with Beacon BOT"
+        >
+          Ask
+        </button>
+      </div>
+
+    </form>
+
+    <section
+      id="results-state"
+      class="results-state empty"
+      aria-live="polite"
+      aria-relevant="additions text"
+      aria-busy="false"
+    >
+      <div class="empty-state">
+        <h4>Evidence-first responses</h4>
+        <p>
+          Beacon BOT uses the current local SSL corpus and returns an answer, source links, and the
+          strongest retrieved evidence together.
+        </p>
+        <p>
+          For the cleanest review experience, begin with one of the suggested questions and then
+          branch into your own follow-ups.
+        </p>
+      </div>
+    </section>
+  </aside>
+
+  <script src="/ui/app.js"></script>
+</body>
+</html>

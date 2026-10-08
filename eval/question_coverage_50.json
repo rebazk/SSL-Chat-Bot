@@ -1,0 +1,502 @@
+[
+  {
+    "id": "xq01",
+    "baseline_anchor": true,
+    "category": "overview",
+    "question": "What is the Sustainable Solutions Lab, and what does it focus on?",
+    "expected_behavior": "Answer from the SSL homepage and ScholarWorks collection page with a grounded overview of SSL's mission and focus.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "xq02",
+    "baseline_anchor": true,
+    "category": "community_factual",
+    "question": "According to the SSL materials, what are some climate-related concerns or priorities raised by Boston communities of color?",
+    "expected_behavior": "Synthesize community-focused evidence and cite specific report pages rather than general website text.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001", "ssl_pdf_015", "ssl_pdf_013", "ssl_pdf_010"]
+  },
+  {
+    "id": "xq03",
+    "baseline_anchor": true,
+    "category": "report_factual",
+    "question": "What does the report 'Who Counts in Climate Resilience?' identify as the two transient populations it focuses on?",
+    "expected_behavior": "Answer precisely and cite the report passage naming both groups.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_016"]
+  },
+  {
+    "id": "xq04",
+    "baseline_anchor": true,
+    "category": "policy_financing",
+    "question": "What kinds of funding mechanisms are discussed in SSL's climate resilience financing work?",
+    "expected_behavior": "List mechanisms named in the financing report without inventing new categories.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_005"]
+  },
+  {
+    "id": "xq05",
+    "baseline_anchor": true,
+    "category": "policy_governance",
+    "question": "What are some of the governance or policy changes recommended for adapting Boston's built environment to increased flooding?",
+    "expected_behavior": "Summarize governance recommendations and cite the governance report or executive summary.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_009", "ssl_pdf_006"]
+  },
+  {
+    "id": "xq06",
+    "baseline_anchor": true,
+    "category": "comparison",
+    "question": "How are 'Voices that Matter' and 'Views that Matter' different in the kind of evidence or perspective they provide?",
+    "expected_behavior": "Compare the reports carefully and cite both sources.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_015", "ssl_pdf_013"]
+  },
+  {
+    "id": "xq07",
+    "baseline_anchor": true,
+    "category": "place_based",
+    "question": "What concerns does the East Boston resilience work raise about climate adaptation, gentrification, and displacement?",
+    "expected_behavior": "Answer from the East Boston report and cite the English version unless the system explicitly supports Spanish retrieval.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_012", "ssl_pdf_011"]
+  },
+  {
+    "id": "xq08",
+    "baseline_anchor": true,
+    "category": "program",
+    "question": "What does the SSL report say about the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston region?",
+    "expected_behavior": "Summarize program purpose, strengths, or challenges from the report and cite it.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_010"]
+  },
+  {
+    "id": "xq09",
+    "baseline_anchor": true,
+    "category": "synthesis",
+    "question": "What has SSL done about climate resilience in Boston?",
+    "expected_behavior": "Provide a grounded synthesis across multiple SSL sources and cite more than one source.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_005", "ssl_pdf_001", "ssl_pdf_008", "ssl_pdf_009", "ssl_pdf_012", "ssl_pdf_015"]
+  },
+  {
+    "id": "xq10",
+    "baseline_anchor": true,
+    "category": "website_factual",
+    "question": "Who is the current director of the Sustainable Solutions Lab?",
+    "expected_behavior": "Answer directly from the SSL people page or collection page and cite the public source.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_003", "ssl_web_001"]
+  },
+  {
+    "id": "xq11",
+    "baseline_anchor": false,
+    "category": "website_overview",
+    "question": "How does SSL publicly describe its climate justice framing?",
+    "expected_behavior": "Use public website wording about climate justice and historically excluded communities.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "xq12",
+    "baseline_anchor": false,
+    "category": "website_overview",
+    "question": "Which communities does SSL say it centers or prioritizes in its work?",
+    "expected_behavior": "Answer from website framing and keep the focus on communities explicitly named or described in the public materials.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "xq13",
+    "baseline_anchor": false,
+    "category": "website_overview",
+    "question": "What kinds of public materials are available through the SSL ScholarWorks collection?",
+    "expected_behavior": "Describe the collection at a high level, including that it hosts public SSL publications and related materials.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_001", "ssl_web_004"]
+  },
+  {
+    "id": "xq14",
+    "baseline_anchor": false,
+    "category": "website_factual",
+    "question": "What projects or initiatives are highlighted on the SSL projects page?",
+    "expected_behavior": "List named projects and initiatives from the projects page without inventing additional items.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_005"]
+  },
+  {
+    "id": "xq15",
+    "baseline_anchor": false,
+    "category": "website_factual",
+    "question": "What phone number is listed for SSL on the public website?",
+    "expected_behavior": "Answer only if the public website snapshot contains a lab contact phone number, and cite the webpage URL.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_005", "ssl_web_002"]
+  },
+  {
+    "id": "xq16",
+    "baseline_anchor": false,
+    "category": "website_overview",
+    "question": "What does the SSL research page say about the lab's publications or annual reports?",
+    "expected_behavior": "Use the research page snapshot to describe how SSL presents its publications and annual reports.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_004"]
+  },
+  {
+    "id": "xq17",
+    "baseline_anchor": false,
+    "category": "comparison",
+    "question": "How do the SSL homepage and the ScholarWorks collection page differ in what they emphasize?",
+    "expected_behavior": "Compare the homepage's institute framing with the ScholarWorks page's collection/publication framing.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "xq18",
+    "baseline_anchor": false,
+    "category": "community_factual",
+    "question": "What health or air-quality concerns appear in 'Community-Led Climate Preparedness and Resilience in Boston'?",
+    "expected_behavior": "Answer from the report itself and cite report pages rather than broad website summaries.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001"]
+  },
+  {
+    "id": "xq19",
+    "baseline_anchor": false,
+    "category": "community_factual",
+    "question": "According to 'Voices that Matter,' what preparedness concerns do Boston-area residents of color discuss?",
+    "expected_behavior": "Summarize preparedness concerns from the focus-group report and cite it directly.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_015"]
+  },
+  {
+    "id": "xq20",
+    "baseline_anchor": false,
+    "category": "comparison",
+    "question": "What does 'Voices that Matter' add beyond the earlier survey reported in 'Views that Matter'?",
+    "expected_behavior": "Explain the added qualitative value of the follow-up focus groups and cite both reports if possible.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_015", "ssl_pdf_013"]
+  },
+  {
+    "id": "xq21",
+    "baseline_anchor": false,
+    "category": "community_factual",
+    "question": "What kinds of climate opinions or differences are highlighted in 'Views that Matter'?",
+    "expected_behavior": "Use survey findings and avoid overclaiming beyond what the report presents.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_013"]
+  },
+  {
+    "id": "xq22",
+    "baseline_anchor": false,
+    "category": "community_factual",
+    "question": "What leadership role do the SSL materials suggest for communities of color in climate responses?",
+    "expected_behavior": "Ground the answer in resident perspectives and community-led preparedness materials.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_015", "ssl_pdf_001"]
+  },
+  {
+    "id": "xq23",
+    "baseline_anchor": false,
+    "category": "community_factual",
+    "question": "What concerns do the SSL materials raise about whether institutions are listening to community knowledge?",
+    "expected_behavior": "Use community-facing reports to describe institutional trust, listening, and equitable response concerns.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_015", "ssl_pdf_001"]
+  },
+  {
+    "id": "xq24",
+    "baseline_anchor": false,
+    "category": "community_factual",
+    "question": "How does 'Community-Led Climate Preparedness and Resilience in Boston' connect community knowledge to equitable investment or action?",
+    "expected_behavior": "Answer from the report's discussion of community-led preparedness and equity.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001"]
+  },
+  {
+    "id": "xq25",
+    "baseline_anchor": false,
+    "category": "place_based",
+    "question": "What recommendations for equitable climate resilience appear in the East Boston report?",
+    "expected_behavior": "Summarize report recommendations and keep the answer tied to East Boston rather than Boston in general.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_012", "ssl_pdf_011"]
+  },
+  {
+    "id": "xq26",
+    "baseline_anchor": false,
+    "category": "comparison",
+    "question": "What is the relationship between the English and Spanish East Boston reports in the corpus?",
+    "expected_behavior": "Identify them as English and Spanish versions or companions of the same East Boston resilience work.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_012", "ssl_pdf_011"]
+  },
+  {
+    "id": "xq27",
+    "baseline_anchor": false,
+    "category": "multilingual",
+    "question": "¿Qué preocupaciones plantea 'Oportunidad en la Complejidad' sobre la resiliencia climática equitativa en East Boston?",
+    "expected_behavior": "Answer from the Spanish report if the system can retrieve it reliably; otherwise note a language limitation rather than hallucinating.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_011", "ssl_pdf_012"]
+  },
+  {
+    "id": "xq28",
+    "baseline_anchor": false,
+    "category": "policy_financing",
+    "question": "How does the financing report organize resilience funding across different scales?",
+    "expected_behavior": "Describe the report's multi-scale structure and cite the relevant financing pages.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_005"]
+  },
+  {
+    "id": "xq29",
+    "baseline_anchor": false,
+    "category": "policy_financing",
+    "question": "What role do insurance or risk-based pricing play in SSL's financing climate resilience work?",
+    "expected_behavior": "Answer from the financing report and avoid speculation beyond the report's named mechanisms.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_005"]
+  },
+  {
+    "id": "xq30",
+    "baseline_anchor": false,
+    "category": "policy_financing",
+    "question": "What recommendations does the financing report make for advancing resilience finance?",
+    "expected_behavior": "Summarize recommendations from the report or executive summary and cite them directly.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_005"]
+  },
+  {
+    "id": "xq31",
+    "baseline_anchor": false,
+    "category": "policy_governance",
+    "question": "What is the Infrastructure Coordination Committee proposed in the governance report?",
+    "expected_behavior": "Answer from the governance report and explain its role in adaptation coordination.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_009", "ssl_pdf_006"]
+  },
+  {
+    "id": "xq32",
+    "baseline_anchor": false,
+    "category": "policy_governance",
+    "question": "What is the Climate Research Advisory Organization mentioned in the governance report, and why is it proposed?",
+    "expected_behavior": "Use the governance report's language about research, governance, or coordination rather than guessing.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_009", "ssl_pdf_006"]
+  },
+  {
+    "id": "xq33",
+    "baseline_anchor": false,
+    "category": "policy_governance",
+    "question": "How does the governance report connect governance scale to flooding responses in Boston's built environment?",
+    "expected_behavior": "Answer with a governance-scale framing, not just a list of flood interventions.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_009"]
+  },
+  {
+    "id": "xq34",
+    "baseline_anchor": false,
+    "category": "comparison",
+    "question": "What does the executive summary of the governance report emphasize compared with the full report?",
+    "expected_behavior": "Compare level of detail, scope, or emphasis between the executive summary and the full governance report.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_006", "ssl_pdf_009"]
+  },
+  {
+    "id": "xq35",
+    "baseline_anchor": false,
+    "category": "infrastructure",
+    "question": "What does the harbor-wide barrier systems report analyze for Boston Harbor?",
+    "expected_behavior": "Describe the focus of the report without overstating conclusions beyond what the report analyzes.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_007", "ssl_pdf_004"]
+  },
+  {
+    "id": "xq36",
+    "baseline_anchor": false,
+    "category": "infrastructure",
+    "question": "What tradeoffs, concerns, or limitations come with harbor-wide barrier systems according to the SSL materials?",
+    "expected_behavior": "Use report evidence about feasibility, tradeoffs, or preliminary-analysis limits rather than a generic barrier debate.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_007", "ssl_pdf_004"]
+  },
+  {
+    "id": "xq37",
+    "baseline_anchor": false,
+    "category": "comparison",
+    "question": "How does the executive summary of the harbor-wide barrier systems report differ from the full report?",
+    "expected_behavior": "Compare the summary's role with the fuller analysis in the main report.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_004", "ssl_pdf_007"]
+  },
+  {
+    "id": "xq38",
+    "baseline_anchor": false,
+    "category": "program",
+    "question": "According to the MVP report, what does the Massachusetts Municipal Vulnerability Preparedness Program help municipalities do?",
+    "expected_behavior": "Answer directly from the report's description of municipal support and adaptation planning.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_010"]
+  },
+  {
+    "id": "xq39",
+    "baseline_anchor": false,
+    "category": "program",
+    "question": "What lessons does the MVP report identify for future resilience planning in the Greater Boston region?",
+    "expected_behavior": "Summarize lessons from the report and keep them grounded in the report's findings.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_010"]
+  },
+  {
+    "id": "xq40",
+    "baseline_anchor": false,
+    "category": "program",
+    "question": "How does the MVP report discuss social equity and climate justice?",
+    "expected_behavior": "Use the report's own framing around equity and climate justice integration.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_010"]
+  },
+  {
+    "id": "xq41",
+    "baseline_anchor": false,
+    "category": "program",
+    "question": "What does the MVP report say about cross-sector collaboration?",
+    "expected_behavior": "Answer from the report's lessons or analysis of collaboration rather than general adaptation theory.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_010"]
+  },
+  {
+    "id": "xq42",
+    "baseline_anchor": false,
+    "category": "report_factual",
+    "question": "Why are transient populations often overlooked in climate resilience planning according to 'Who Counts in Climate Resilience'?",
+    "expected_behavior": "Ground the answer in the report's analysis of visibility, governance, or institutional blind spots.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_016"]
+  },
+  {
+    "id": "xq43",
+    "baseline_anchor": false,
+    "category": "report_factual",
+    "question": "What challenges does the report describe for people experiencing homelessness during climate impacts?",
+    "expected_behavior": "Answer from the transient populations report and avoid adding outside homelessness policy claims.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_016"]
+  },
+  {
+    "id": "xq44",
+    "baseline_anchor": false,
+    "category": "report_factual",
+    "question": "What challenges does the report describe for international seasonal H-2B workers during climate impacts?",
+    "expected_behavior": "Answer from the transient populations report and keep the focus on the report's documented issues.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_016"]
+  },
+  {
+    "id": "xq45",
+    "baseline_anchor": false,
+    "category": "report_factual",
+    "question": "What geographic areas does 'Who Counts in Climate Resilience?' focus on?",
+    "expected_behavior": "Answer directly and cite the report's framing of Boston and Cape Cod.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_016"]
+  },
+  {
+    "id": "xq46",
+    "baseline_anchor": false,
+    "category": "regional_planning",
+    "question": "What does 'Connecting for Equitable Climate Adaptation' contribute to understanding Metro Boston climate adaptation stakeholders?",
+    "expected_behavior": "Summarize the stakeholder-mapping contribution and keep the answer tied to Metro Boston.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_002"]
+  },
+  {
+    "id": "xq47",
+    "baseline_anchor": false,
+    "category": "regional_planning",
+    "question": "What kinds of stakeholder relationships matter for equitable climate adaptation in Metro Boston according to the SSL materials?",
+    "expected_behavior": "Use the stakeholder-mapping report and avoid drifting into generic adaptation-network language.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_002"]
+  },
+  {
+    "id": "xq48",
+    "baseline_anchor": false,
+    "category": "migration",
+    "question": "What themes appear in 'Critical approaches to climate-induced migration research and solutions'?",
+    "expected_behavior": "Summarize the paper's major migration and solution themes without overclaiming precision if retrieval is weak.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_003"]
+  },
+  {
+    "id": "xq49",
+    "baseline_anchor": false,
+    "category": "synthesis",
+    "question": "How do the financing and governance reports complement each other in SSL's climate resilience work?",
+    "expected_behavior": "Provide a grounded cross-report comparison that distinguishes financing from governance rather than merging them into one generic answer.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_009", "ssl_pdf_005", "ssl_pdf_006"]
+  },
+  {
+    "id": "xq50",
+    "baseline_anchor": false,
+    "category": "out_of_scope",
+    "question": "What is SSL's current annual budget?",
+    "expected_behavior": "Refuse or say the answer is not available in the current public corpus rather than inventing a budget figure.",
+    "must_include_citation": false,
+    "expected_support": "unsupported",
+    "preferred_sources": ["ssl_web_004", "ssl_web_002", "ssl_web_001"]
+  }
+]

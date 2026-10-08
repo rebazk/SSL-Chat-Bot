@@ -1,0 +1,90 @@
+[
+  {
+    "id": "mdh01",
+    "question_type": "synthesis",
+    "category": "evidence_types",
+    "question": "Across the SSL materials, what different kinds of evidence are used to talk about climate resilience in Boston?",
+    "reference_answer": "A strong answer should synthesize website framing, survey evidence, focus-group evidence, community-based report evidence, and policy or governance analysis.",
+    "expected_behavior": "Provide a clean cross-source synthesis and avoid falling back to raw extractive text.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_pdf_013", "ssl_pdf_015", "ssl_pdf_001", "ssl_pdf_008", "ssl_pdf_009"]
+  },
+  {
+    "id": "mdh02",
+    "question_type": "synthesis",
+    "category": "trust_and_governance",
+    "question": "How do the SSL materials connect community knowledge, trust, and institutional decision-making in climate resilience?",
+    "reference_answer": "A strong answer should combine Community-Led and Voices that Matter to explain that community knowledge is essential, and that climate decisions suffer when institutions do not listen meaningfully or build trust.",
+    "expected_behavior": "Use more than one report and keep the answer focused on the relationship among knowledge, trust, and decision-making.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001", "ssl_pdf_015"]
+  },
+  {
+    "id": "mdh03",
+    "question_type": "comparison",
+    "category": "east_boston_comparison",
+    "question": "How do the East Boston report and the Boston-wide governance or financing reports differ in what they emphasize about equitable climate resilience?",
+    "reference_answer": "A strong answer should contrast the East Boston report's neighborhood-level concerns about displacement, trust, and local accountability with the governance or financing reports' city-scale institutional and funding focus.",
+    "expected_behavior": "Give a clean comparison across at least two source families instead of summarizing only one report.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_012", "ssl_pdf_008", "ssl_pdf_009"]
+  },
+  {
+    "id": "mdh04",
+    "question_type": "synthesis",
+    "category": "transient_populations",
+    "question": "What do the SSL materials suggest about why some populations can be left out of climate resilience planning?",
+    "reference_answer": "A strong answer should synthesize the transient-populations report with broader community-focused work to explain that some groups are excluded because they are hard to see in place-based systems, underrepresented institutionally, or insufficiently centered in planning.",
+    "expected_behavior": "Synthesize exclusion themes without inventing a universal ranking of affected groups.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_016", "ssl_pdf_001", "ssl_pdf_015"]
+  },
+  {
+    "id": "mdh05",
+    "question_type": "comparison",
+    "category": "barrier_tradeoffs",
+    "question": "How do the harbor-wide barrier materials and SSL's broader Boston adaptation work differ in the kinds of solutions they discuss?",
+    "reference_answer": "A strong answer should explain that the harbor-wide barrier materials focus on major physical protection options and their tradeoffs, while other SSL Boston adaptation work emphasizes governance, financing, community equity, and neighborhood resilience.",
+    "expected_behavior": "Compare solution types and tradeoffs across source families rather than summarizing a single barrier report.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_007", "ssl_pdf_009", "ssl_pdf_008", "ssl_pdf_012"]
+  },
+  {
+    "id": "mdh06",
+    "question_type": "synthesis",
+    "category": "website_and_reports",
+    "question": "How do SSL's website pages and public reports work together to explain the lab's climate justice mission?",
+    "reference_answer": "A strong answer should connect website-level mission framing with concrete report examples that show what climate justice looks like in practice.",
+    "expected_behavior": "Synthesize website framing plus at least one report family; avoid giving a homepage-only answer.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_004", "ssl_pdf_001", "ssl_pdf_015", "ssl_pdf_012"]
+  },
+  {
+    "id": "mdh07",
+    "question_type": "ambiguous",
+    "category": "subjective_broad",
+    "question": "What is SSL's single most important conclusion about climate resilience?",
+    "reference_answer": "There is no single public SSL statement that establishes one definitive most important conclusion across all materials.",
+    "expected_behavior": "Narrow or refuse rather than inventing one definitive master conclusion for the whole corpus.",
+    "must_include_citation": false,
+    "expected_support": "unsupported",
+    "preferred_sources": []
+  },
+  {
+    "id": "mdh08",
+    "question_type": "ambiguous",
+    "category": "unsupported_ranking",
+    "question": "Which Boston neighborhood appears to be the most at risk across all SSL materials?",
+    "reference_answer": "SSL materials do not establish a single ranked most-at-risk Boston neighborhood across the entire corpus.",
+    "expected_behavior": "Refuse or clearly narrow the answer instead of inventing a ranked neighborhood conclusion.",
+    "must_include_citation": false,
+    "expected_support": "unsupported",
+    "preferred_sources": []
+  }
+]

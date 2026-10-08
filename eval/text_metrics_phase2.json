@@ -1,0 +1,301 @@
+{
+  "summary": {
+    "count": 32,
+    "rouge1_f1": 0.5136,
+    "rouge2_f1": 0.2671,
+    "rougeL_f1": 0.4166,
+    "bertscore_f1": 0.9138,
+    "exact_match": 0.0,
+    "token_f1": 0.4854
+  },
+  "per_question": [
+    {
+      "id": "p2q01",
+      "rouge1_f1": 0.8358,
+      "rouge2_f1": 0.6462,
+      "rougeL_f1": 0.6866,
+      "bertscore_f1": 0.9639,
+      "exact_match": 0.0,
+      "token_f1": 0.8308
+    },
+    {
+      "id": "p2q02",
+      "rouge1_f1": 0.5287,
+      "rouge2_f1": 0.3059,
+      "rougeL_f1": 0.4368,
+      "bertscore_f1": 0.9206,
+      "exact_match": 0.0,
+      "token_f1": 0.5
+    },
+    {
+      "id": "p2q03",
+      "rouge1_f1": 0.8966,
+      "rouge2_f1": 0.8148,
+      "rougeL_f1": 0.8966,
+      "bertscore_f1": 0.9734,
+      "exact_match": 0.0,
+      "token_f1": 0.8889
+    },
+    {
+      "id": "p2q04",
+      "rouge1_f1": 0.4615,
+      "rouge2_f1": 0.08,
+      "rougeL_f1": 0.4231,
+      "bertscore_f1": 0.912,
+      "exact_match": 0.0,
+      "token_f1": 0.4889
+    },
+    {
+      "id": "p2q05",
+      "rouge1_f1": 0.3158,
+      "rouge2_f1": 0.0727,
+      "rougeL_f1": 0.2105,
+      "bertscore_f1": 0.8842,
+      "exact_match": 0.0,
+      "token_f1": 0.1852
+    },
+    {
+      "id": "p2q06",
+      "rouge1_f1": 0.6197,
+      "rouge2_f1": 0.3768,
+      "rougeL_f1": 0.5352,
+      "bertscore_f1": 0.9344,
+      "exact_match": 0.0,
+      "token_f1": 0.5231
+    },
+    {
+      "id": "p2q07",
+      "rouge1_f1": 0.4638,
+      "rouge2_f1": 0.1194,
+      "rougeL_f1": 0.3188,
+      "bertscore_f1": 0.9166,
+      "exact_match": 0.0,
+      "token_f1": 0.4058
+    },
+    {
+      "id": "p2q08",
+      "rouge1_f1": 0.1562,
+      "rouge2_f1": 0.0,
+      "rougeL_f1": 0.125,
+      "bertscore_f1": 0.8545,
+      "exact_match": 0.0,
+      "token_f1": 0.129
+    },
+    {
+      "id": "p2q09",
+      "rouge1_f1": 0.2424,
+      "rouge2_f1": 0.0,
+      "rougeL_f1": 0.1212,
+      "bertscore_f1": 0.843,
+      "exact_match": 0.0,
+      "token_f1": 0.1587
+    },
+    {
+      "id": "p2q10",
+      "rouge1_f1": 0.7222,
+      "rouge2_f1": 0.4706,
+      "rougeL_f1": 0.6667,
+      "bertscore_f1": 0.9524,
+      "exact_match": 0.0,
+      "token_f1": 0.7222
+    },
+    {
+      "id": "p2q11",
+      "rouge1_f1": 0.5373,
+      "rouge2_f1": 0.4,
+      "rougeL_f1": 0.5373,
+      "bertscore_f1": 0.945,
+      "exact_match": 0.0,
+      "token_f1": 0.5373
+    },
+    {
+      "id": "p2q12",
+      "rouge1_f1": 0.4706,
+      "rouge2_f1": 0.1633,
+      "rougeL_f1": 0.3529,
+      "bertscore_f1": 0.9032,
+      "exact_match": 0.0,
+      "token_f1": 0.48
+    },
+    {
+      "id": "p2q13",
+      "rouge1_f1": 0.5714,
+      "rouge2_f1": 0.0851,
+      "rougeL_f1": 0.3265,
+      "bertscore_f1": 0.9082,
+      "exact_match": 0.0,
+      "token_f1": 0.5833
+    },
+    {
+      "id": "p2q14",
+      "rouge1_f1": 0.7619,
+      "rouge2_f1": 0.5902,
+      "rougeL_f1": 0.7302,
+      "bertscore_f1": 0.9416,
+      "exact_match": 0.0,
+      "token_f1": 0.7302
+    },
+    {
+      "id": "p2q15",
+      "rouge1_f1": 0.6667,
+      "rouge2_f1": 0.4286,
+      "rougeL_f1": 0.6667,
+      "bertscore_f1": 0.9431,
+      "exact_match": 0.0,
+      "token_f1": 0.6429
+    },
+    {
+      "id": "p2q16",
+      "rouge1_f1": 0.1724,
+      "rouge2_f1": 0.0,
+      "rougeL_f1": 0.1034,
+      "bertscore_f1": 0.8223,
+      "exact_match": 0.0,
+      "token_f1": 0.1754
+    },
+    {
+      "id": "p2q17",
+      "rouge1_f1": 0.6154,
+      "rouge2_f1": 0.2222,
+      "rougeL_f1": 0.3692,
+      "bertscore_f1": 0.9117,
+      "exact_match": 0.0,
+      "token_f1": 0.5902
+    },
+    {
+      "id": "p2q18",
+      "rouge1_f1": 0.5574,
+      "rouge2_f1": 0.2373,
+      "rougeL_f1": 0.3934,
+      "bertscore_f1": 0.9302,
+      "exact_match": 0.0,
+      "token_f1": 0.4828
+    },
+    {
+      "id": "p2q19",
+      "rouge1_f1": 0.3429,
+      "rouge2_f1": 0.0882,
+      "rougeL_f1": 0.2,
+      "bertscore_f1": 0.8998,
+      "exact_match": 0.0,
+      "token_f1": 0.3529
+    },
+    {
+      "id": "p2q20",
+      "rouge1_f1": 0.3279,
+      "rouge2_f1": 0.1356,
+      "rougeL_f1": 0.2951,
+      "bertscore_f1": 0.8911,
+      "exact_match": 0.0,
+      "token_f1": 0.2456
+    },
+    {
+      "id": "p2q21",
+      "rouge1_f1": 0.4935,
+      "rouge2_f1": 0.2133,
+      "rougeL_f1": 0.2857,
+      "bertscore_f1": 0.9153,
+      "exact_match": 0.0,
+      "token_f1": 0.4737
+    },
+    {
+      "id": "p2q22",
+      "rouge1_f1": 0.5,
+      "rouge2_f1": 0.1892,
+      "rougeL_f1": 0.2895,
+      "bertscore_f1": 0.9137,
+      "exact_match": 0.0,
+      "token_f1": 0.4324
+    },
+    {
+      "id": "p2q23",
+      "rouge1_f1": 0.5,
+      "rouge2_f1": 0.2857,
+      "rougeL_f1": 0.4444,
+      "bertscore_f1": 0.9082,
+      "exact_match": 0.0,
+      "token_f1": 0.4706
+    },
+    {
+      "id": "p2q24",
+      "rouge1_f1": 0.3429,
+      "rouge2_f1": 0.0588,
+      "rougeL_f1": 0.2571,
+      "bertscore_f1": 0.8843,
+      "exact_match": 0.0,
+      "token_f1": 0.3478
+    },
+    {
+      "id": "p2q25",
+      "rouge1_f1": 0.5424,
+      "rouge2_f1": 0.3158,
+      "rougeL_f1": 0.3729,
+      "bertscore_f1": 0.922,
+      "exact_match": 0.0,
+      "token_f1": 0.566
+    },
+    {
+      "id": "p2q26",
+      "rouge1_f1": 0.5714,
+      "rouge2_f1": 0.25,
+      "rougeL_f1": 0.4762,
+      "bertscore_f1": 0.9335,
+      "exact_match": 0.0,
+      "token_f1": 0.5714
+    },
+    {
+      "id": "p2q27",
+      "rouge1_f1": 0.4598,
+      "rouge2_f1": 0.2824,
+      "rougeL_f1": 0.3218,
+      "bertscore_f1": 0.9095,
+      "exact_match": 0.0,
+      "token_f1": 0.4419
+    },
+    {
+      "id": "p2q28",
+      "rouge1_f1": 0.5965,
+      "rouge2_f1": 0.3273,
+      "rougeL_f1": 0.5965,
+      "bertscore_f1": 0.9346,
+      "exact_match": 0.0,
+      "token_f1": 0.5357
+    },
+    {
+      "id": "p2q29",
+      "rouge1_f1": 0.5526,
+      "rouge2_f1": 0.2703,
+      "rougeL_f1": 0.4737,
+      "bertscore_f1": 0.9261,
+      "exact_match": 0.0,
+      "token_f1": 0.5
+    },
+    {
+      "id": "p2q30",
+      "rouge1_f1": 0.5352,
+      "rouge2_f1": 0.3188,
+      "rougeL_f1": 0.4507,
+      "bertscore_f1": 0.9214,
+      "exact_match": 0.0,
+      "token_f1": 0.4928
+    },
+    {
+      "id": "p2q31",
+      "rouge1_f1": 0.4086,
+      "rouge2_f1": 0.1978,
+      "rougeL_f1": 0.3011,
+      "bertscore_f1": 0.8953,
+      "exact_match": 0.0,
+      "token_f1": 0.3656
+    },
+    {
+      "id": "p2q32",
+      "rouge1_f1": 0.6667,
+      "rouge2_f1": 0.6,
+      "rougeL_f1": 0.6667,
+      "bertscore_f1": 0.9276,
+      "exact_match": 0.0,
+      "token_f1": 0.6829
+    }
+  ]
+}

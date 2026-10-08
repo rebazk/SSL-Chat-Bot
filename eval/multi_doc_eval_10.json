@@ -1,0 +1,112 @@
+[
+  {
+    "id": "mdq01",
+    "question_type": "synthesis",
+    "category": "cross_source_overview",
+    "question": "What has SSL done about climate resilience in Boston?",
+    "reference_answer": "A strong answer should synthesize SSL's public Boston-related work across website framing, community reports, and policy reports rather than leaning on a single source.",
+    "expected_behavior": "Grounded synthesis across multiple SSL sources with more than one citation.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_005", "ssl_pdf_001", "ssl_pdf_008", "ssl_pdf_009", "ssl_pdf_012", "ssl_pdf_015"]
+  },
+  {
+    "id": "mdq02",
+    "question_type": "synthesis",
+    "category": "policy_comparison",
+    "question": "How do the financing and governance reports complement each other in SSL's climate resilience work?",
+    "reference_answer": "A strong answer should explain that the financing work focuses on how adaptation can be funded, while the governance work focuses on institutional coordination, policy, and implementation.",
+    "expected_behavior": "Compare both reports and cite evidence from each side of the comparison.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_009", "ssl_pdf_005", "ssl_pdf_006"]
+  },
+  {
+    "id": "mdq03",
+    "question_type": "comparison",
+    "category": "report_comparison",
+    "question": "What does 'Voices that Matter' add beyond the earlier survey reported in 'Views that Matter'?",
+    "reference_answer": "A strong answer should note that Views is survey-based while Voices adds focus-group evidence and lived experience from Boston-area residents of color.",
+    "expected_behavior": "Compare the reports carefully and cite both sources.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_015", "ssl_pdf_013"]
+  },
+  {
+    "id": "mdq04",
+    "question_type": "comparison",
+    "category": "website_comparison",
+    "question": "How do the SSL homepage and the ScholarWorks collection page differ in what they emphasize?",
+    "reference_answer": "A strong answer should contrast the homepage's institute-and-mission framing with the ScholarWorks page's publication-archive framing.",
+    "expected_behavior": "Use both webpage snapshots and avoid falling back to stitched extractive text.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "mdq05",
+    "question_type": "synthesis",
+    "category": "community_priorities",
+    "question": "According to the SSL materials, what are some climate-related concerns or priorities raised by Boston communities of color?",
+    "reference_answer": "A strong answer should synthesize health burdens, preparedness/resource concerns, and questions about whether institutions are listening and investing equitably.",
+    "expected_behavior": "Synthesize community-focused evidence from multiple reports and cite specific report pages rather than general website text.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001", "ssl_pdf_015", "ssl_pdf_013", "ssl_pdf_010"]
+  },
+  {
+    "id": "mdq06",
+    "question_type": "synthesis",
+    "category": "community_leadership",
+    "question": "What leadership role do the SSL materials suggest for communities of color in climate responses?",
+    "reference_answer": "A strong answer should explain that SSL materials frame communities of color not only as populations facing risk but as leaders whose knowledge and priorities should shape adaptation.",
+    "expected_behavior": "Synthesize across reports that talk about community leadership, knowledge, and equitable climate responses.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001", "ssl_pdf_015"]
+  },
+  {
+    "id": "mdq07",
+    "question_type": "synthesis",
+    "category": "community_action",
+    "question": "How does 'Community-Led Climate Preparedness and Resilience in Boston' connect community knowledge to equitable investment or action?",
+    "reference_answer": "A strong answer should explain that the report links local knowledge and leadership to equitable resilience, collective action, institutional resources, and long-term government engagement.",
+    "expected_behavior": "Use the report's action-oriented passages instead of generic community language.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_pdf_001"]
+  },
+  {
+    "id": "mdq08",
+    "question_type": "synthesis",
+    "category": "publication_discovery",
+    "question": "What kinds of public materials are available through the SSL ScholarWorks collection and the research page?",
+    "reference_answer": "A strong answer should combine the ScholarWorks collection page and the research page to describe reports, annual or impact reports, executive summaries, articles, and the broader publication archive.",
+    "expected_behavior": "Describe the public publication record at a high level using both webpages.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_001", "ssl_web_004"]
+  },
+  {
+    "id": "mdq09",
+    "question_type": "synthesis",
+    "category": "website_framing",
+    "question": "Which communities does SSL say it centers or prioritizes in its work?",
+    "reference_answer": "A strong answer should synthesize website framing around historically excluded communities and communities facing severe climate impacts.",
+    "expected_behavior": "Use the public website framing and keep the answer tied to communities explicitly described by SSL.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "mdq10",
+    "question_type": "synthesis",
+    "category": "evidence_types",
+    "question": "Across the SSL materials, what different kinds of evidence are used to talk about climate resilience in Boston?",
+    "reference_answer": "A strong answer should synthesize that SSL uses public website framing, survey findings, focus-group discussions, community-based reports, and policy or governance analyses to talk about climate resilience in Boston.",
+    "expected_behavior": "Either give a clean cross-source synthesis with multiple citations or narrow the answer clearly if the retrieved support is too fragmented.",
+    "must_include_citation": true,
+    "expected_support": "supported",
+    "preferred_sources": ["ssl_web_002", "ssl_pdf_013", "ssl_pdf_015", "ssl_pdf_001", "ssl_pdf_008", "ssl_pdf_009"]
+  }
+]

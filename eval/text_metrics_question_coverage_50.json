@@ -1,0 +1,12 @@
+{
+  "summary": {
+    "count": 50,
+    "rouge1_f1": 0.4632,
+    "rouge2_f1": 0.22,
+    "rougeL_f1": 0.3707,
+    "bertscore_f1": 0.9049,
+    "exact_match": 0.0,
+    "token_f1": 0.4364
+  },
+  "per_question": []
+}

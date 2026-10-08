@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beacon BOT Phase 2 Partner Manual Scoring Packet</title>
+  <style>
+    :root {
+      --bg: #f3efe6;
+      --paper: #fffdfa;
+      --ink: #17313a;
+      --muted: #576870;
+      --line: #d8cfbf;
+      --accent: #0e6a7a;
+      --accent-soft: #dceff1;
+      --panel: #f7f3ea;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #edf4f1 0%, var(--bg) 56%, #f2eee5 100%);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+      padding: 28px 16px 48px;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid rgba(23, 49, 58, 0.08);
+      border-radius: 24px;
+      box-shadow: 0 18px 52px rgba(23, 49, 58, 0.10);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 36px 40px 28px;
+      background:
+        radial-gradient(circle at top right, rgba(14, 106, 122, 0.16), transparent 32%),
+        linear-gradient(135deg, #f7fbfa 0%, #f4ede0 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow,
+    .pill,
+    .meta-item,
+    .score-label {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 74ch;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section {
+      padding: 26px 40px;
+      border-bottom: 1px solid rgba(216, 207, 191, 0.72);
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+    }
+
+    .callout {
+      background: var(--accent-soft);
+      border: 1px solid rgba(14, 106, 122, 0.14);
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: #1f515a;
+      margin-top: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      border: 1px solid rgba(14, 106, 122, 0.16);
+      background: #fbfffe;
+      color: #20545f;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .questions {
+      display: grid;
+      gap: 18px;
+    }
+
+    .question {
+      border: 1px solid rgba(23, 49, 58, 0.10);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: #fffefa;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .qid {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #edf5f6;
+      color: var(--accent);
+      font: 700 12px/1 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .question h3 {
+      font-size: 1.12rem;
+      line-height: 1.28;
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .meta-item {
+      background: var(--panel);
+      border: 1px solid rgba(23, 49, 58, 0.08);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .block-title {
+      font: 700 0.9rem/1.2 Arial, Helvetica, sans-serif;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 14px 0 6px;
+    }
+
+    .answer-box,
+    .blank-box,
+    .notes-box {
+      border: 1px solid rgba(23, 49, 58, 0.10);
+      border-radius: 14px;
+      background: #fffdf9;
+      padding: 12px 13px;
+    }
+
+    .answer-box {
+      background: #fcfbf7;
+    }
+
+    .answer-box a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      word-break: break-word;
+    }
+
+    .blank-box {
+      min-height: 132px;
+      background:
+        linear-gradient(to bottom, transparent 0, transparent 27px, rgba(23, 49, 58, 0.10) 28px) top left / 100% 28px repeat-y,
+        #fffefa;
+    }
+
+    .notes-box {
+      min-height: 110px;
+      background:
+        linear-gradient(to bottom, transparent 0, transparent 27px, rgba(23, 49, 58, 0.10) 28px) top left / 100% 28px repeat-y,
+        #fffefa;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .toolbar button {
+      border: 1px solid rgba(14, 106, 122, 0.18);
+      background: #fffefa;
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: 700 0.9rem/1 Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+
+    .save-status {
+      color: var(--muted);
+      font: 600 0.88rem/1.4 Arial, Helvetica, sans-serif;
+    }
+
+    .reviewer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .field-card {
+      border: 1px solid rgba(23, 49, 58, 0.10);
+      border-radius: 14px;
+      background: #fffefa;
+      padding: 12px;
+    }
+
+    .field-card label {
+      display: block;
+      margin: 0 0 6px;
+      color: var(--muted);
+      font: 700 0.82rem/1.2 Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .review-input,
+    .review-select,
+    .review-textarea {
+      width: 100%;
+      border: 1px solid rgba(23, 49, 58, 0.16);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 10px 11px;
+    }
+
+    .review-input,
+    .review-select {
+      min-height: 42px;
+    }
+
+    .review-textarea {
+      min-height: 128px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .score-card .review-select {
+      margin-top: 2px;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 5px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-card {
+      border: 1px solid rgba(23, 49, 58, 0.10);
+      border-radius: 14px;
+      padding: 11px 12px;
+      background: #fcfbf7;
+    }
+
+    .score-label {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .score-scale {
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+    }
+
+    .optional {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(23, 49, 58, 0.18);
+    }
+
+    .optional p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .optional-lines {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .line-card {
+      border: 1px solid rgba(23, 49, 58, 0.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #fcfbf7;
+      min-height: 78px;
+    }
+
+    .line-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+    }
+
+    .line {
+      display: block;
+      height: 18px;
+      border-bottom: 1px solid rgba(23, 49, 58, 0.22);
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    @media print {
+      @page {
+        margin: 0.5in;
+      }
+
+      body {
+        background: #fff;
+        color: #1d3038;
+        padding: 0;
+        font-size: 10.8pt;
+      }
+
+      .page {
+        max-width: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .hero {
+        background: #fff;
+        padding: 0 0 18px;
+      }
+
+      .section {
+        padding: 18px 0;
+      }
+
+      .question {
+        border-radius: 10px;
+        padding: 12px;
+      }
+
+      .score-grid,
+      .optional-lines {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .blank-box {
+        min-height: 96px;
+      }
+
+      .toolbar {
+        display: none;
+      }
+
+      .reviewer-grid,
+      .score-grid,
+      .optional-lines {
+        grid-template-columns: 1fr;
+      }
+
+      .review-input,
+      .review-select,
+      .review-textarea {
+        border: 1px solid #d6dede;
+        background: transparent;
+        color: #1f2f35;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Beacon BOT</p>
+      <h1>Phase 2 Partner Manual Scoring Packet</h1>
+      <p class="lead">
+        This packet is meant for institute-facing review of Beacon BOT's current answers on a selected 20-question
+        subset from the 32-question Phase 2 candidate benchmark. We are hoping for feedback on at least 15 of the 20
+        questions so we can calibrate both answer quality and institute fit.
+      </p>
+      <div class="callout">
+        Please review the current Beacon BOT answer, score it on the 1-5 dimensions, and optionally write what SSL
+        would want the answer to say. We intentionally left the preferred-answer area blank so your feedback can be
+        independent of our internal wording.
+      </div>
+      <div class="pill-row">
+        <span class="pill">20 selected questions</span>
+        <span class="pill">Please score at least 15</span>
+        <span class="pill">Blank SSL preferred-answer area</span>
+        <span class="pill">Built from Phase 2 candidate set</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How To Review</h2>
+      <div class="callout">
+        For each question, please use the current answer as-is. Then score answer quality, grounding, and helpfulness
+        from 1 to 5. Optional fields are included for whether the answer helped with source navigation (SC1) and
+        whether it gave a grounded, useful summary of SSL's public work (SC2).
+      </div>
+      <div class="pill-row">
+        <span class="pill">1 = weak / misleading / not useful</span>
+        <span class="pill">3 = partly useful but incomplete</span>
+        <span class="pill">5 = strong / accurate / genuinely helpful</span>
+      </div>
+      <div class="reviewer-grid">
+        <div class="field-card">
+          <label for="reviewer-name">Reviewer Name</label>
+          <input class="review-input" id="reviewer-name" type="text" placeholder="Name" />
+        </div>
+        <div class="field-card">
+          <label for="reviewer-role">Reviewer Role / Team</label>
+          <input class="review-input" id="reviewer-role" type="text" placeholder="Optional" />
+        </div>
+        <div class="field-card">
+          <label for="review-date">Review Date</label>
+          <input class="review-input" id="review-date" type="date" />
+        </div>
+      </div>
+      <div class="toolbar">
+        <button type="button" id="save-now">Save Now</button>
+        <button type="button" id="download-html">Download Completed Form</button>
+        <button type="button" id="download-json">Download Responses (.json)</button>
+        <button type="button" id="clear-form">Clear Saved Responses</button>
+        <span class="save-status" id="save-status">Responses save automatically in this browser.</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Questions</h2>
+      <div class="questions">
+        <article class="question">
+          <span class="qid">1 · p2q01</span>
+          <h3>What is the Sustainable Solutions Lab, and what does it focus on?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">overview</span>
+            <span class="meta-item">lab overview</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The Sustainable Solutions Lab (SSL) at UMass Boston is a climate justice-focused institute that bridges sectors, convenes collaborators, and advances transdisciplinary research and action centered on communities facing climate change, especially communities that have been historically excluded.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>https://www.umb.edu/ssl/</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">2 · p2q02</span>
+          <h3>According to the SSL materials, what are some climate-related concerns or priorities raised by Boston communities of color?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">community factual</span>
+            <span class="meta-item">community climate concerns</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">Across SSL materials, Boston communities of color raise climate-related concerns that include health and air-quality burdens such as asthma and heat-related risks, uneven preparedness and access to resources, and whether institutions are truly listening to community knowledge and investing equitably. The materials frame these concerns as both immediate climate burdens and broader questions of justice, trust, and community power.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Community-Led Climate Preparedness and Resilience in Boston: New Evidence from Communities of Color (p. 10)</li><li>Voices that Matter: Boston Area Residents of Color Discuss Climate Change (p. 18)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">3 · p2q03</span>
+          <h3>What does the report 'Who Counts in Climate Resilience?' identify as the two transient populations it focuses on?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">report factual</span>
+            <span class="meta-item">report lookup</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The report focuses on two transient populations: people experiencing homelessness and international seasonal H-2B workers.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Who Counts in Climate Resilience? Transient Populations and Climate Resilience in Boston and Cape Cod, Massachusetts (p. 22)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">4 · p2q05</span>
+          <h3>What are some of the governance or policy changes recommended for adapting Boston's built environment to increased flooding?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">policy governance</span>
+            <span class="meta-item">policy governance</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The governance report recommends changing existing governance tools and implementing Climate Ready Boston initiatives, including an Infrastructure Coordination Committee, a Climate Research Advisory Organization, and governance for district-scale coastal flood protection.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Governance for a Changing Climate: Adapting Boston's Built Environment for Increased Flooding (p. 12)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">5 · p2q06</span>
+          <h3>How are 'Voices that Matter' and 'Views that Matter' different in the kind of evidence or perspective they provide?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">comparison</span>
+            <span class="meta-item">report comparison</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">Views that Matter is primarily a survey-based report that captures opinions from a large Greater Boston sample. Voices that Matter follows up with focus groups involving 70 Boston-area residents of color, adding qualitative detail and lived experience to those survey findings.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Views that Matter: Race and Opinions on Climate Change of Boston Area Residents (p. 7)</li><li>Voices that Matter: Boston Area Residents of Color Discuss Climate Change (p. 28)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">6 · p2q07</span>
+          <h3>What concerns does the East Boston resilience work raise about climate adaptation, gentrification, and displacement?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">place based</span>
+            <span class="meta-item">place-based resilience</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The East Boston report warns that climate resilience efforts can fuel gentrification, displacement, and loss of community trust if they are not designed equitably. It frames climate adaptation as inseparable from housing pressure, neighborhood change, and longstanding local inequities.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Opportunity in the Complexity: Recommendations for Equitable Climate Resilience in East Boston (p. 44)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">7 · p2q08</span>
+          <h3>What does the SSL report say about the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston region?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">program</span>
+            <span class="meta-item">program overview</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The Sustainable Solutions Lab (SSL) at UMass Boston is a climate justice-focused institute that bridges sectors, convenes collaborators, and advances transdisciplinary research and action centered on communities facing climate change, especially communities that have been historically excluded.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Learning from the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston Region (p. 12)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">8 · p2q09</span>
+          <h3>What has SSL done about climate resilience in Boston?</h3>
+          <div class="meta">
+            <span class="meta-item">ambiguous</span>
+            <span class="meta-item">synthesis</span>
+            <span class="meta-item">broad SSL synthesis</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The Sustainable Solutions Lab (SSL) at UMass Boston is a climate justice-focused institute that bridges sectors, convenes collaborators, and advances transdisciplinary research and action centered on communities facing climate change, especially communities that have been historically excluded.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Governance for a Changing Climate: Adapting Boston's Built Environment for Increased Flooding (p. 7)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">9 · p2q10</span>
+          <h3>Who is the current director of the Sustainable Solutions Lab?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">website factual</span>
+            <span class="meta-item">contact and people lookup</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The SSL public pages list Dr. B. R. (Balakrishnan) Balachandran as the current director and executive director of the lab.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>https://www.umb.edu/ssl/people/</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">10 · p2q11</span>
+          <h3>How does SSL publicly describe its climate justice framing?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">website overview</span>
+            <span class="meta-item">mission framing</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">SSL publicly frames its work as climate justice research and action focused on historically excluded people and communities facing climate change. Its public pages also describe the lab as building an expansive, inclusive climate action space and a broader climate justice research community that can support equitable adaptation.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>https://www.umb.edu/ssl/</li><li>https://www.umb.edu/ssl/research/</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">11 · p2q13</span>
+          <h3>What kinds of public materials are available through the SSL ScholarWorks collection?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">website overview</span>
+            <span class="meta-item">publication discovery</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The SSL ScholarWorks collection serves as a public archive for SSL materials. It includes annual or impact reports, research reports, executive summaries, and links to published articles and other public-facing SSL publications.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>https://scholarworks.umb.edu/ssl/</li><li>https://www.umb.edu/ssl/research/</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">12 · p2q14</span>
+          <h3>What projects or initiatives are highlighted on the SSL projects page?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">website factual</span>
+            <span class="meta-item">project discovery</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The SSL projects page highlights the Northeast Climate Justice Research Collaborative, the Climate Adaptation Forum, the Climate Careers Curricula Initiative (C3I), the Cape Cod Rail Resilience Project, and the Climate Inequality and Integrative Resilience (CLIIR) Initiative.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>https://www.umb.edu/ssl/projects/</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">13 · p2q15</span>
+          <h3>What phone number is listed for SSL on the public website?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">website factual</span>
+            <span class="meta-item">contact lookup</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The public SSL materials list the lab phone number as (617) 297-6630.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>https://www.umb.edu/ssl/projects/</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">14 · p2q18</span>
+          <h3>What health or air-quality concerns appear in 'Community-Led Climate Preparedness and Resilience in Boston'?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">community factual</span>
+            <span class="meta-item">report lookup</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The report highlights climate-related health burdens for communities of color, including respiratory and asthma-related risks, extreme-heat exposure, and other environmental health harms. It frames these as part of broader preparedness concerns facing Boston communities of color.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Community-Led Climate Preparedness and Resilience in Boston: New Evidence from Communities of Color (p. 15)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">15 · p2q19</span>
+          <h3>According to 'Voices that Matter,' what preparedness concerns do Boston-area residents of color discuss?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">community factual</span>
+            <span class="meta-item">community preparedness</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">In Voices that Matter, Boston-area residents of color discuss whether households and neighborhoods are prepared for both short- and long-term climate impacts. The report surfaces concerns about heat, storms, transportation disruptions, health vulnerabilities, and unequal access to the information and resources people need to prepare well.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Voices that Matter: Boston Area Residents of Color Discuss Climate Change (p. 13)</li><li>Voices that Matter: Boston Area Residents of Color Discuss Climate Change (p. 28)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">16 · p2q23</span>
+          <h3>How does the financing report organize resilience funding across different scales?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">policy financing</span>
+            <span class="meta-item">policy financing</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The financing report organizes resilience funding across multiple scales. It distinguishes region- or city-wide financing for major shared infrastructure, district-level entities for neighborhood-scale projects, and parcel or building-level tools for individual properties and retrofits, arguing that different resilience problems require different financing mechanisms.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Executive Summary: Financing Climate Resilience: Mobilizing Resources and Incentives to Protect Boston from Climate Risks (p. 6)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">17 · p2q24</span>
+          <h3>What is the Infrastructure Coordination Committee proposed in the governance report?</h3>
+          <div class="meta">
+            <span class="meta-item">factual lookup</span>
+            <span class="meta-item">policy governance</span>
+            <span class="meta-item">policy governance</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">The Infrastructure Coordination Committee is a proposed coordinating body for key infrastructure sectors such as water and sewer, transportation, and energy. The report proposes it because Boston depends on infrastructure systems it does not control alone, so adaptation planning has to be coordinated with regional and state actors.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Executive Summary: Governance for a Changing Climate: Adapting Boston's Built Environment for Increased Flooding (p. 9)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">18 · p2q27</span>
+          <h3>Why are transient populations often overlooked in climate resilience planning according to 'Who Counts in Climate Resilience'?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">report factual</span>
+            <span class="meta-item">report interpretation</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">According to the report, transient populations are often overlooked because they are not well represented in local climate resilience initiatives, are not treated as a high organizational priority, and are harder to see in the place-based systems and data that guide planning. The report argues that mobility, precarious housing, and institutional blind spots all contribute to their exclusion.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Who Counts in Climate Resilience? Transient Populations and Climate Resilience in Boston and Cape Cod, Massachusetts (p. 21)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">19 · p2q30</span>
+          <h3>What does 'Connecting for Equitable Climate Adaptation' contribute to understanding Metro Boston climate adaptation stakeholders?</h3>
+          <div class="meta">
+            <span class="meta-item">topic discovery</span>
+            <span class="meta-item">regional planning</span>
+            <span class="meta-item">regional stakeholder discovery</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">Connecting for Equitable Climate Adaptation contributes a stakeholder-mapping view of the Metro Boston climate adaptation field. It identifies key actors, shows who is collaborating with whom, surfaces gaps and silos in the network, and helps frame where more equitable coordination and partnership are needed.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box"><ul><li>Connecting for Equitable Climate Adaptation: Mapping Stakeholder Relationships in Metro Boston (p. 21)</li></ul></div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+
+        <article class="question">
+          <span class="qid">20 · p2q32</span>
+          <h3>What is SSL's current annual budget?</h3>
+          <div class="meta">
+            <span class="meta-item">out of scope</span>
+            <span class="meta-item">unsupported public query</span>
+            <span class="meta-item">refusal check</span>
+          </div>
+          <div class="block-title">Current Beacon BOT Answer</div>
+          <div class="answer-box">I couldn't find that information in the current SSL corpus. The current public SSL corpus does not provide a reliable annual budget figure.</div>
+          <div class="block-title">Current Citation(s)</div>
+          <div class="answer-box">No citation expected for this refusal case.</div>
+          <div class="block-title">If SSL Wanted This Answer To Say Something Different</div>
+          <div class="blank-box"></div>
+          <div class="score-grid">
+            <div class="score-card"><p class="score-label">Answer Quality</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Grounding</p><div class="score-scale">1 2 3 4 5</div></div>
+            <div class="score-card"><p class="score-label">Helpfulness</p><div class="score-scale">1 2 3 4 5</div></div>
+          </div>
+          <div class="optional">
+            <p>Optional institute criteria</p>
+            <div class="optional-lines">
+              <div class="line-card"><strong>SC1: Source navigation pass/score</strong><span class="line"></span><span class="line"></span></div>
+              <div class="line-card"><strong>SC2: Grounded summary pass/score</strong><span class="line"></span><span class="line"></span></div>
+            </div>
+          </div>
+          <div class="block-title">Notes</div>
+          <div class="notes-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Additional Thoughts Or Feedback</h2>
+      <div class="callout">
+        Please use this space for any broader feedback that did not fit cleanly into the per-question notes. For
+        example: missing public-facing questions, concerns about tone, answers that felt misleading, or suggestions for
+        how Beacon BOT should represent SSL more clearly.
+      </div>
+      <div class="block-title">Open Feedback</div>
+      <div class="notes-box" style="min-height: 420px;"></div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const storageKey = "phase2_partner_manual_scoring_packet_20_v1";
+      const statusEl = document.getElementById("save-status");
+      const reviewerFields = ["reviewer-name", "reviewer-role", "review-date"];
+      const citationUrlMap = {
+        "Community-Led Climate Preparedness and Resilience in Boston: New Evidence from Communities of Color": "https://scholarworks.umb.edu/ssl/1",
+        "Connecting for Equitable Climate Adaptation: Mapping Stakeholder Relationships in Metro Boston": "https://scholarworks.umb.edu/ssl/8",
+        "Executive Summary: Financing Climate Resilience: Mobilizing Resources and Incentives to Protect Boston from Climate Risks": "https://scholarworks.umb.edu/ssl/13",
+        "Executive Summary: Governance for a Changing Climate: Adapting Boston's Built Environment for Increased Flooding": "https://scholarworks.umb.edu/ssl/15",
+        "Governance for a Changing Climate: Adapting Boston's Built Environment for Increased Flooding": "https://scholarworks.umb.edu/ssl/14",
+        "Learning from the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston Region": "https://scholarworks.umb.edu/ssl/3",
+        "Opportunity in the Complexity: Recommendations for Equitable Climate Resilience in East Boston": "https://scholarworks.umb.edu/ssl/4",
+        "Views that Matter: Race and Opinions on Climate Change of Boston Area Residents": "https://scholarworks.umb.edu/ssl/5",
+        "Voices that Matter: Boston Area Residents of Color Discuss Climate Change": "https://scholarworks.umb.edu/ssl/6",
+        "Who Counts in Climate Resilience? Transient Populations and Climate Resilience in Boston and Cape Cod, Massachusetts": "https://scholarworks.umb.edu/ssl/7"
+      };
+
+      const scoreOptions = [["", "Select"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]];
+      const passOptions = [["", "Select"], ["Pass", "Pass"], ["Fail", "Fail"], ["N/A", "N/A"]];
+
+      function makeSelect(options, key) {
+        const select = document.createElement("select");
+        select.className = "review-select";
+        select.dataset.fieldKey = key;
+        options.forEach(([value, label]) => {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = label;
+          select.appendChild(option);
+        });
+        return select;
+      }
+
+      function makeTextarea(key, placeholder, rows) {
+        const textarea = document.createElement("textarea");
+        textarea.className = "review-textarea";
+        textarea.dataset.fieldKey = key;
+        textarea.placeholder = placeholder;
+        textarea.rows = rows;
+        return textarea;
+      }
+
+      function getQuestionId(article, index) {
+        const text = article.querySelector(".qid") ? article.querySelector(".qid").textContent : "";
+        const match = text.match(/p2q\d{2}/i);
+        return match ? match[0].toLowerCase() : `question_${index + 1}`;
+      }
+
+      function linkifyCitations(article) {
+        const citationTitle = Array.from(article.querySelectorAll(".block-title"))
+          .find((el) => el.textContent.trim() === "Current Citation(s)");
+        if (!citationTitle) return;
+
+        const citationBox = citationTitle.nextElementSibling;
+        if (!citationBox || !citationBox.classList.contains("answer-box")) return;
+
+          citationBox.querySelectorAll("li").forEach((item) => {
+          const text = item.textContent.trim();
+          if (/^https?:\/\//i.test(text)) {
+            const link = document.createElement("a");
+            link.href = text;
+            link.textContent = text;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            item.textContent = "";
+            item.appendChild(link);
+          } else {
+            const titleMatch = text.match(/^(.*?)(\s+\(p\.\s*\d+\))$/i);
+            const title = titleMatch ? titleMatch[1].trim() : text;
+            const url = citationUrlMap[title];
+            if (url) {
+              const link = document.createElement("a");
+              link.href = url;
+              link.textContent = text;
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
+              item.textContent = "";
+              item.appendChild(link);
+            }
+          }
+        });
+      }
+
+      document.querySelectorAll(".question").forEach((article, index) => {
+        const qid = getQuestionId(article, index);
+        linkifyCitations(article);
+        const preferredBox = article.querySelector(".blank-box");
+        if (preferredBox) {
+          preferredBox.innerHTML = "";
+          preferredBox.appendChild(makeTextarea(`${qid}__preferred_answer`, "Optional: what would SSL want this answer to say instead?", 6));
+        }
+
+        article.querySelectorAll(".score-card").forEach((card) => {
+          const label = (card.querySelector(".score-label")?.textContent || "score").trim().toLowerCase().replace(/[^a-z0-9]+/g, "_");
+          const scale = card.querySelector(".score-scale");
+          if (scale) scale.replaceWith(makeSelect(scoreOptions, `${qid}__${label}`));
+        });
+
+        article.querySelectorAll(".line-card").forEach((card, i) => {
+          const keyBase = i === 0 ? `${qid}__sc1` : `${qid}__sc2`;
+          card.querySelectorAll(".line").forEach((line) => line.remove());
+
+          const passLabel = document.createElement("label");
+          passLabel.textContent = "Pass / Fail / N/A";
+          passLabel.style.display = "block";
+          passLabel.style.margin = "8px 0 6px";
+          passLabel.style.color = "#556871";
+          passLabel.style.font = "700 0.78rem/1.2 Arial, Helvetica, sans-serif";
+
+          const scoreLabel = passLabel.cloneNode();
+          scoreLabel.textContent = "Score (optional)";
+
+          card.appendChild(passLabel);
+          card.appendChild(makeSelect(passOptions, `${keyBase}_pass`));
+          card.appendChild(scoreLabel);
+          card.appendChild(makeSelect(scoreOptions, `${keyBase}_score`));
+        });
+
+        const noteBox = article.querySelector(".notes-box");
+        if (noteBox) {
+          noteBox.innerHTML = "";
+          noteBox.appendChild(makeTextarea(`${qid}__notes`, "Optional notes on this answer", 5));
+        }
+      });
+
+      const overallFeedbackBox = document.querySelector(".section:last-of-type .notes-box");
+      if (overallFeedbackBox) {
+        overallFeedbackBox.innerHTML = "";
+        overallFeedbackBox.appendChild(makeTextarea("overall_additional_feedback", "Any additional thoughts or broader feedback", 14));
+      }
+
+      function collectData() {
+        const data = { reviewer: {}, responses: {} };
+        reviewerFields.forEach((id) => {
+          const el = document.getElementById(id);
+          data.reviewer[id] = el ? el.value : "";
+        });
+        document.querySelectorAll("[data-field-key]").forEach((field) => {
+          data.responses[field.dataset.fieldKey] = field.value;
+        });
+        return data;
+      }
+
+      function setStatus(text) {
+        if (statusEl) statusEl.textContent = text;
+      }
+
+      function save() {
+        localStorage.setItem(storageKey, JSON.stringify(collectData()));
+        setStatus(`Saved locally at ${new Date().toLocaleTimeString()}.`);
+      }
+
+      function load() {
+        const raw = localStorage.getItem(storageKey);
+        if (!raw) return;
+        try {
+          const data = JSON.parse(raw);
+          reviewerFields.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el && data.reviewer && typeof data.reviewer[id] === "string") el.value = data.reviewer[id];
+          });
+          document.querySelectorAll("[data-field-key]").forEach((field) => {
+            if (data.responses && typeof data.responses[field.dataset.fieldKey] === "string") {
+              field.value = data.responses[field.dataset.fieldKey];
+            }
+          });
+          setStatus("Loaded saved responses from this browser.");
+        } catch (error) {
+          setStatus("Could not load saved responses.");
+        }
+      }
+
+      function downloadJson() {
+        const blob = new Blob([JSON.stringify(collectData(), null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "phase2_partner_manual_scoring_responses.json";
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+
+      function sanitizeFilenamePart(value, fallback) {
+        const cleaned = (value || "")
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "_")
+          .replace(/^_+|_+$/g, "");
+        return cleaned || fallback;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;");
+      }
+
+      function buildCompletedHtml() {
+        const clone = document.documentElement.cloneNode(true);
+        const cloneDoc = document.implementation.createHTMLDocument(document.title);
+        cloneDoc.replaceChild(clone, cloneDoc.documentElement);
+        const snapshot = collectData();
+
+        cloneDoc.querySelectorAll(".review-input, .review-select, .review-textarea").forEach((field) => {
+          const fieldKey = field.dataset.fieldKey || field.id || "";
+          const value = fieldKey && snapshot.responses[fieldKey] !== undefined
+            ? snapshot.responses[fieldKey]
+            : (snapshot.reviewer[fieldKey] !== undefined ? snapshot.reviewer[fieldKey] : (field.value || ""));
+
+          if (field.tagName === "SELECT") {
+            const sourceField = fieldKey
+              ? document.querySelector(`[data-field-key="${fieldKey}"]`)
+              : null;
+            const text = sourceField && sourceField.tagName === "SELECT"
+              ? sourceField.options[sourceField.selectedIndex]?.textContent || ""
+              : value;
+            const span = cloneDoc.createElement("div");
+            span.className = "review-textarea";
+            span.style.minHeight = "42px";
+            span.style.whiteSpace = "pre-wrap";
+            span.textContent = value ? text : "";
+            field.replaceWith(span);
+          } else {
+            const div = cloneDoc.createElement("div");
+            div.className = "review-textarea";
+            div.style.whiteSpace = "pre-wrap";
+            if (field.classList.contains("review-input")) {
+              div.style.minHeight = "42px";
+            }
+            div.textContent = value;
+            field.replaceWith(div);
+          }
+        });
+
+        cloneDoc.querySelectorAll(".toolbar script").forEach((el) => el.remove());
+        cloneDoc.querySelectorAll("script").forEach((el) => el.remove());
+        const toolbar = cloneDoc.querySelector(".toolbar");
+        if (toolbar) {
+          const note = cloneDoc.createElement("span");
+          note.className = "save-status";
+          note.textContent = "Completed export snapshot";
+          toolbar.innerHTML = "";
+          toolbar.appendChild(note);
+        }
+
+        const exportMeta = cloneDoc.createElement("div");
+        exportMeta.className = "callout";
+        exportMeta.style.marginTop = "16px";
+        const reviewerName = document.getElementById("reviewer-name")?.value || "Reviewer";
+        const reviewDate = document.getElementById("review-date")?.value || new Date().toISOString().slice(0, 10);
+        exportMeta.innerHTML = `<strong>Exported completed form</strong><br>Reviewer: ${escapeHtml(reviewerName)}<br>Date: ${escapeHtml(reviewDate)}`;
+        const reviewSection = cloneDoc.querySelector(".section");
+        if (reviewSection) {
+          reviewSection.appendChild(exportMeta);
+        }
+
+        const embeddedData = cloneDoc.createElement("script");
+        embeddedData.id = "embedded-response-data";
+        embeddedData.type = "application/json";
+        embeddedData.textContent = JSON.stringify(snapshot);
+        cloneDoc.body.appendChild(embeddedData);
+
+        return "<!DOCTYPE html>\n" + cloneDoc.documentElement.outerHTML;
+      }
+
+      function downloadCompletedHtml() {
+        const reviewerName = sanitizeFilenamePart(document.getElementById("reviewer-name")?.value, "reviewer");
+        const reviewDate = sanitizeFilenamePart(document.getElementById("review-date")?.value, new Date().toISOString().slice(0, 10));
+        const blob = new Blob([buildCompletedHtml()], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `ssl_review_${reviewerName}_${reviewDate}.html`;
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+
+      function clearForm() {
+        if (!window.confirm("Clear all saved responses from this browser for this packet?")) return;
+        localStorage.removeItem(storageKey);
+        reviewerFields.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.value = "";
+        });
+        document.querySelectorAll("[data-field-key]").forEach((field) => {
+          field.value = "";
+        });
+        setStatus("Saved responses cleared.");
+      }
+
+      function loadEmbeddedData() {
+        const embedded = document.getElementById("embedded-response-data");
+        if (!embedded || !embedded.textContent.trim()) return false;
+        try {
+          const data = JSON.parse(embedded.textContent);
+          reviewerFields.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el && data.reviewer && typeof data.reviewer[id] === "string") el.value = data.reviewer[id];
+          });
+          document.querySelectorAll("[data-field-key]").forEach((field) => {
+            if (data.responses && typeof data.responses[field.dataset.fieldKey] === "string") {
+              field.value = data.responses[field.dataset.fieldKey];
+            }
+          });
+          setStatus("Loaded embedded responses from this file.");
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }
+
+      if (!loadEmbeddedData()) {
+        load();
+      }
+      document.addEventListener("input", (event) => {
+        if (event.target.matches(".review-input, .review-textarea, .review-select")) save();
+      });
+      document.addEventListener("change", (event) => {
+        if (event.target.matches(".review-input, .review-textarea, .review-select")) save();
+      });
+      document.getElementById("save-now")?.addEventListener("click", save);
+      document.getElementById("download-html")?.addEventListener("click", downloadCompletedHtml);
+      document.getElementById("download-json")?.addEventListener("click", downloadJson);
+      document.getElementById("clear-form")?.addEventListener("click", clearForm);
+    })();
+  </script>
+</body>
+</html>

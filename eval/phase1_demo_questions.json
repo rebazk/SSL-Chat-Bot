@@ -1,0 +1,72 @@
+[
+  {
+    "id": "q01",
+    "category": "overview",
+    "question": "What is the Sustainable Solutions Lab, and what does it focus on?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_web_002", "ssl_web_001"]
+  },
+  {
+    "id": "q02",
+    "category": "factual",
+    "question": "According to the SSL materials, what are some climate-related concerns or priorities raised by Boston communities of color?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_001", "ssl_pdf_015", "ssl_pdf_013", "ssl_pdf_010"]
+  },
+  {
+    "id": "q03",
+    "category": "factual",
+    "question": "What does the report 'Who Counts in Climate Resilience?' identify as the two transient populations it focuses on?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_016"]
+  },
+  {
+    "id": "q04",
+    "category": "topic_specific",
+    "question": "What kinds of funding mechanisms are discussed in SSL's climate resilience financing work?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_008", "ssl_pdf_005"]
+  },
+  {
+    "id": "q05",
+    "category": "topic_specific",
+    "question": "What are some of the governance or policy changes recommended for adapting Boston's built environment to increased flooding?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_009", "ssl_pdf_006"]
+  },
+  {
+    "id": "q06",
+    "category": "comparison",
+    "question": "How are 'Voices that Matter' and 'Views that Matter' different in the kind of evidence or perspective they provide?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_015", "ssl_pdf_013"]
+  },
+  {
+    "id": "q07",
+    "category": "place_based",
+    "question": "What concerns does the East Boston resilience work raise about climate adaptation, gentrification, and displacement?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_012", "ssl_pdf_011"]
+  },
+  {
+    "id": "q08",
+    "category": "program",
+    "question": "What does the SSL report say about the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston region?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_pdf_010"]
+  },
+  {
+    "id": "q09",
+    "category": "ambiguous",
+    "question": "What has SSL done about climate resilience in Boston?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_web_001", "ssl_pdf_001", "ssl_pdf_008", "ssl_pdf_009", "ssl_pdf_015", "ssl_pdf_012"]
+  },
+  {
+    "id": "q10",
+    "category": "website_factual",
+    "question": "Who is the current director of the Sustainable Solutions Lab?",
+    "must_include_citation": true,
+    "preferred_sources": ["ssl_web_003", "ssl_web_001"]
+  }
+]

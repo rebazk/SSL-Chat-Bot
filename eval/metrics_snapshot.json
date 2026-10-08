@@ -1,0 +1,299 @@
+{
+  "snapshot_date": "2026-05-11",
+  "corpus": {
+    "total_sources": 20,
+    "pdfs": 15,
+    "webpage_snapshots": 5,
+    "duplicates_skipped": 1,
+    "searchable_chunks": 2354
+  },
+  "benchmarks": [
+    {
+      "id": "phase1_demo",
+      "label": "Official 10-question",
+      "total_questions": 10,
+      "expected_supported": 10,
+      "expected_unsupported": 0,
+      "answers_marked_supported": 10,
+      "citation_requirement_satisfied": 10,
+      "citation_required_total": 10,
+      "support_expectation_matched": 10,
+      "preferred_source_hit": 10,
+      "preferred_source_applicable_total": 10
+    },
+    {
+      "id": "coverage_50",
+      "label": "Expanded 50-question",
+      "total_questions": 50,
+      "expected_supported": 49,
+      "expected_unsupported": 1,
+      "answers_marked_supported": 49,
+      "citation_requirement_satisfied": 49,
+      "citation_required_total": 49,
+      "support_expectation_matched": 50,
+      "preferred_source_hit": 50,
+      "preferred_source_applicable_total": 50
+    },
+    {
+      "id": "all_pdfs",
+      "label": "All-PDF coverage",
+      "total_questions": 53,
+      "expected_supported": 52,
+      "expected_unsupported": 1,
+      "answers_marked_supported": 52,
+      "citation_requirement_satisfied": 52,
+      "citation_required_total": 52,
+      "support_expectation_matched": 53,
+      "preferred_source_hit": 53,
+      "preferred_source_applicable_total": 53
+    },
+    {
+      "id": "phase2_candidate",
+      "label": "Phase 2 candidate (32)",
+      "total_questions": 32,
+      "expected_supported": 31,
+      "expected_unsupported": 1,
+      "answers_marked_supported": 31,
+      "citation_requirement_satisfied": 31,
+      "citation_required_total": 31,
+      "support_expectation_matched": 32,
+      "preferred_source_hit": 31,
+      "preferred_source_applicable_total": 31
+    }
+  ],
+  "other_eval_sets": [
+    {
+      "label": "Partner review",
+      "results_path": "eval/phase2_partner_review_questions_18_results.md",
+      "total_questions": 18,
+      "citation_requirement_satisfied": 17,
+      "citation_required_total": 18,
+      "support_expectation_matched": 17,
+      "support_total": 18,
+      "preferred_source_hit": null,
+      "preferred_source_applicable_total": null,
+      "note": "One row can reflect benchmark metadata (for example expected_support defaults) rather than answer quality alone."
+    },
+    {
+      "label": "Multi-document (10)",
+      "results_path": "eval/multi_doc_eval_10_results.md",
+      "total_questions": 10,
+      "citation_requirement_satisfied": 10,
+      "citation_required_total": 10,
+      "support_expectation_matched": 10,
+      "support_total": 10,
+      "preferred_source_hit": 10,
+      "preferred_source_applicable_total": 10
+    },
+    {
+      "label": "Multi-document hard (8)",
+      "results_path": "eval/multi_doc_eval_hard_8_results.md",
+      "total_questions": 8,
+      "citation_requirement_satisfied": 6,
+      "citation_required_total": 6,
+      "support_expectation_matched": 8,
+      "support_total": 8,
+      "preferred_source_hit": 6,
+      "preferred_source_applicable_total": 6
+    },
+    {
+      "label": "Regression / tricky prompts",
+      "results_path": "eval/regression_tricky_prompts_results.md",
+      "total_questions": 7,
+      "citation_requirement_satisfied": 6,
+      "citation_required_total": 6,
+      "support_expectation_matched": 7,
+      "support_total": 7,
+      "preferred_source_hit": 6,
+      "preferred_source_applicable_total": 6
+    }
+  ],
+  "phase2_question_type_counts": [
+    {
+      "label": "Topic discovery",
+      "count": 15
+    },
+    {
+      "label": "Factual lookup",
+      "count": 14
+    },
+    {
+      "label": "Ambiguous",
+      "count": 2
+    },
+    {
+      "label": "Out of scope",
+      "count": 1
+    }
+  ],
+  "failure_buckets": [
+    {
+      "label": "Broad synthesis",
+      "score": 5,
+      "note": "Multi-document questions are still weaker than direct factual lookup."
+    },
+    {
+      "label": "OCR and extractive noise",
+      "score": 3,
+      "note": "Difficult PDF pages still need monitoring, but sparse-PDF fallback indexing now recovers the migration paper that had been dropping citations."
+    },
+    {
+      "label": "Summary vs full report ambiguity",
+      "score": 3,
+      "note": "Executive summaries can outrank fuller reports when a question needs precision."
+    },
+    {
+      "label": "Unsupported query handling",
+      "score": 2,
+      "note": "Refusal behavior is much stronger now, but it still needs to stay visible in evaluation."
+    },
+    {
+      "label": "Website coverage limits",
+      "score": 3,
+      "note": "The web corpus is curated and useful, but still narrower than the full SSL public site."
+    }
+  ],
+  "failure_score_note": "Bar lengths use relative priority scores (1 to 5) for qualitative planning, not calibrated engineering metrics.",
+  "takeaway_closing": "The next quality step is keeping these gains stable with automated tests and periodic benchmark reruns rather than chasing one-off extraction fixes.",
+  "live_multiturn": {
+    "generated_at": "2026-05-13T16:52:20Z",
+    "base_url": "http://127.0.0.1:8765",
+    "input": "eval/multiturn_regression_sample.json",
+    "results_md": "eval/multiturn_regression_results.md",
+    "total_checks": 26,
+    "passed": 26,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "elapsed_sec": 29.77,
+    "latency_ms": {
+      "mean": 1145.12,
+      "p50": 1067.25,
+      "p95": 2853.53,
+      "min": 4.31,
+      "max": 5100.07
+    },
+    "latency_sample_count": 26,
+    "guardrail_turns": 1,
+    "guardrail_passed": 1,
+    "http_errors": 0,
+    "notes": "Latency is round-trip POST /api/ask until JSON parse succeeds; excludes failed requests."
+  },
+  "text_metrics": {
+    "runs": [
+      {
+        "id": "phase2_eval_32_candidate",
+        "label": "Phase 2 candidate (32)",
+        "metrics_json": "eval/text_metrics_phase2_eval_32_candidate.json",
+        "summary": {
+          "count": 32,
+          "rouge1_f1": 0.5136,
+          "rouge2_f1": 0.2671,
+          "rougeL_f1": 0.4166,
+          "bertscore_f1": 0.9138,
+          "exact_match": 0.0,
+          "token_f1": 0.4854
+        }
+      },
+      {
+        "id": "question_coverage_50",
+        "label": "Expanded coverage (50)",
+        "metrics_json": "eval/text_metrics_question_coverage_50.json",
+        "summary": {
+          "count": 50,
+          "rouge1_f1": 0.4632,
+          "rouge2_f1": 0.22,
+          "rougeL_f1": 0.3707,
+          "bertscore_f1": 0.9049,
+          "exact_match": 0.0,
+          "token_f1": 0.4364
+        }
+      }
+    ]
+  },
+  "sources": [
+    "eval/metrics_snapshot.json",
+    "eval/phase1_metrics.md",
+    "eval/phase1_demo_questions_results.md",
+    "eval/question_coverage_50_results.md",
+    "eval/question_coverage_all_pdfs_results.md",
+    "eval/phase2_eval_32_candidate.json",
+    "eval/phase2_eval_32_candidate_results.md",
+    "eval/phase2_partner_review_questions_18_results.md",
+    "eval/multi_doc_eval_10_results.md",
+    "eval/multi_doc_eval_hard_8_results.md",
+    "eval/regression_tricky_prompts_results.md",
+    "eval/multiturn_metrics.json",
+    "docs/failure_analysis.md",
+    "eval/multiturn_regression_sample.json",
+    "eval/regression_tricky_prompts.json",
+    "eval/text_metrics_phase2_eval_32_candidate.json",
+    "eval/text_metrics_question_coverage_50.json"
+  ],
+  "regression_coverage": {
+    "multiturn_spec": "eval/multiturn_regression_sample.json",
+    "multiturn": {
+      "chains": [
+        {
+          "id": "chain_focus_funding",
+          "label": "Focus → funding follow-ups",
+          "turns": 3,
+          "guardrail_turns": 0
+        },
+        {
+          "id": "chain_focus_alt_phrasing",
+          "label": "Short focus → grants",
+          "turns": 2,
+          "guardrail_turns": 0
+        },
+        {
+          "id": "chain_director",
+          "label": "Director phrasing variants",
+          "turns": 3,
+          "guardrail_turns": 0
+        },
+        {
+          "id": "chain_staff_roles",
+          "label": "Staff and roles (deep chain)",
+          "turns": 11,
+          "guardrail_turns": 0
+        },
+        {
+          "id": "chain_wording_variants",
+          "label": "Casual / lowercase phrasing",
+          "turns": 4,
+          "guardrail_turns": 0
+        },
+        {
+          "id": "chain_oos_then_recover",
+          "label": "OOS guardrail → recovery",
+          "turns": 3,
+          "guardrail_turns": 1
+        }
+      ],
+      "totals": {
+        "chains": 6,
+        "turns": 26,
+        "guardrail_turns": 1,
+        "content_checks": 25
+      }
+    },
+    "tricky_prompts_spec": "eval/regression_tricky_prompts.json",
+    "tricky_prompts": {
+      "total": 7,
+      "by_bucket": [
+        {
+          "label": "Expected refusal / OOS",
+          "count": 4
+        },
+        {
+          "label": "Factual / web lookup",
+          "count": 2
+        },
+        {
+          "label": "Broad synthesis",
+          "count": 1
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "chains": [
+    {
+      "id": "chain_focus_funding",
+      "turns": [
+        {
+          "question": "What is the Sustainable Solutions Lab, and what does it focus on?",
+          "expect_contains_any": ["climate justice", "historically excluded", "equitable adaptation"]
+        },
+        {
+          "question": "what about funding",
+          "expect_contains_any": ["funding", "financing", "resilience fees", "bonds"]
+        },
+        {
+          "question": "how about money?",
+          "expect_contains_any": ["funding", "financing", "resilience fees", "bonds"]
+        }
+      ]
+    },
+    {
+      "id": "chain_focus_alt_phrasing",
+      "turns": [
+        {
+          "question": "What is SSL about?",
+          "expect_contains_any": ["climate justice", "historically excluded", "equitable adaptation"]
+        },
+        {
+          "question": "what about grants?",
+          "expect_contains_any": ["funding", "financing", "resilience fees", "bonds"]
+        }
+      ]
+    },
+    {
+      "id": "chain_director",
+      "turns": [
+        {
+          "question": "Who is the current director of the Sustainable Solutions Lab?",
+          "expect_contains_any": ["Balachandran", "Dr."]
+        },
+        {
+          "question": "Who is the executive director of SSL?",
+          "expect_contains_any": ["Balachandran", "Dr."]
+        },
+        {
+          "question": "Who runs SSL as director?",
+          "expect_contains_any": ["Balachandran", "Dr."]
+        }
+      ]
+    },
+    {
+      "id": "chain_staff_roles",
+      "turns": [
+        {
+          "question": "Who is the associate director of the SSL?",
+          "expect_contains_any": ["Gabriela Boscio Santos", "associate director"]
+        },
+        {
+          "question": "Who is the research director?",
+          "expect_contains_any": ["Rosalyn Negron", "Rosalyn Negrón", "research director"]
+        },
+        {
+          "question": "Who is the current director?",
+          "expect_contains_any": ["Balachandran", "Dr."]
+        },
+        {
+          "question": "Who is Dean of Faculty and Inter-Faculty Initiatives at SSL?",
+          "expect_contains_any": ["Rajini Srikanth", "Dean of Faculty"]
+        },
+        {
+          "question": "Who is the community engagement manager?",
+          "expect_contains_any": ["Elisa Guerrero", "Community Engagement Manager"]
+        },
+        {
+          "question": "Who are the SSL staff and their roles?",
+          "expect_contains_any": ["Balachandran", "Rosalyn", "Gabriela", "Rajini", "Elisa"]
+        },
+        {
+          "question": "Who is associate director at SSL?",
+          "expect_contains_any": ["Gabriela", "associate director"]
+        },
+        {
+          "question": "Who is the research director of SSL?",
+          "expect_contains_any": ["Rosalyn Negron", "Rosalyn Negrón", "research director"]
+        },
+        {
+          "question": "Who is dean at SSL?",
+          "expect_contains_any": ["Rajini Srikanth", "Dean of Faculty"]
+        },
+        {
+          "question": "Who leads community engagement at SSL?",
+          "expect_contains_any": ["Elisa Guerrero", "Community Engagement Manager"]
+        },
+        {
+          "question": "List everyone on the SSL staff page.",
+          "expect_contains_any": ["Balachandran", "Rosalyn", "Gabriela", "Rajini", "Elisa"]
+        }
+      ]
+    },
+    {
+      "id": "chain_wording_variants",
+      "turns": [
+        {
+          "question": "who is the director of the ssl?",
+          "expect_contains_any": ["Balachandran", "Dr."]
+        },
+        {
+          "question": "Who is the current director of SSL?",
+          "expect_contains_any": ["Balachandran", "Dr."]
+        },
+        {
+          "question": "Who is the SSL associate director?",
+          "expect_contains_any": ["Gabriela", "associate director"]
+        },
+        {
+          "question": "what does ssl focus on?",
+          "expect_contains_any": ["climate", "justice", "adaptation"]
+        }
+      ]
+    },
+    {
+      "id": "chain_oos_then_recover",
+      "turns": [
+        {
+          "question": "Who won last night's basketball game?",
+          "expect_guardrail": "out_of_scope_denied"
+        },
+        {
+          "question": "What does SSL focus on?",
+          "expect_contains_any": ["climate", "justice", "adaptation"]
+        },
+        {
+          "question": "What is SSL's mission?",
+          "expect_contains_any": ["climate", "justice", "adaptation"]
+        }
+      ]
+    }
+  ]
+}

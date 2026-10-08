@@ -1,0 +1,101 @@
+﻿{
+    "label":  "manualscoring1",
+    "reviewer":  {
+                     "reviewer-name":  "B.R. Balachandran",
+                     "reviewer-role":  "ED",
+                     "review-date":  "2026-04-30"
+                 },
+    "source_file":  "docs/manualscoring1_dr_b_completed_export.html",
+    "filled_scoring_csv":  "eval/manualscoring1_dr_b.csv",
+    "visual_metrics_csv":  "eval/manualscoring1_visual_metrics.csv",
+    "totals":  {
+                   "questions_reviewed":  20,
+                   "questions_with_notes":  9,
+                   "questions_with_preferred_answer_edits":  2,
+                   "priority_fix_targets":  5
+               },
+    "averages":  {
+                     "answer_quality_1_5":  4.15,
+                     "grounding_quality_1_5":  4.1,
+                     "helpfulness_1_5":  4.05,
+                     "overall_average_1_5":  4.1
+                 },
+    "pass_fail":  {
+                      "sc1_pass":  16,
+                      "sc1_fail":  4,
+                      "sc2_pass":  17,
+                      "sc2_fail":  2
+                  },
+    "priority_fix_targets":  [
+                                 {
+                                     "packet_number":  4,
+                                     "question_id":  "p2q05",
+                                     "category":  "policy_governance",
+                                     "answer_quality":  5,
+                                     "grounding":  5,
+                                     "helpfulness":  4,
+                                     "sc1_pass":  "Fail",
+                                     "sc1_score":  1,
+                                     "sc2_pass":  "",
+                                     "sc2_score":  null,
+                                     "has_notes":  true,
+                                     "has_preferred_answer":  false
+                                 },
+                                 {
+                                     "packet_number":  6,
+                                     "question_id":  "p2q07",
+                                     "category":  "place_based",
+                                     "answer_quality":  4,
+                                     "grounding":  4,
+                                     "helpfulness":  4,
+                                     "sc1_pass":  "Fail",
+                                     "sc1_score":  1,
+                                     "sc2_pass":  "Pass",
+                                     "sc2_score":  4,
+                                     "has_notes":  true,
+                                     "has_preferred_answer":  false
+                                 },
+                                 {
+                                     "packet_number":  7,
+                                     "question_id":  "p2q08",
+                                     "category":  "program",
+                                     "answer_quality":  1,
+                                     "grounding":  1,
+                                     "helpfulness":  1,
+                                     "sc1_pass":  "Fail",
+                                     "sc1_score":  1,
+                                     "sc2_pass":  "Fail",
+                                     "sc2_score":  1,
+                                     "has_notes":  true,
+                                     "has_preferred_answer":  false
+                                 },
+                                 {
+                                     "packet_number":  8,
+                                     "question_id":  "p2q09",
+                                     "category":  "synthesis",
+                                     "answer_quality":  1,
+                                     "grounding":  1,
+                                     "helpfulness":  1,
+                                     "sc1_pass":  "Fail",
+                                     "sc1_score":  1,
+                                     "sc2_pass":  "Fail",
+                                     "sc2_score":  1,
+                                     "has_notes":  true,
+                                     "has_preferred_answer":  false
+                                 },
+                                 {
+                                     "packet_number":  14,
+                                     "question_id":  "p2q18",
+                                     "category":  "community_factual",
+                                     "answer_quality":  3,
+                                     "grounding":  3,
+                                     "helpfulness":  3,
+                                     "sc1_pass":  "Pass",
+                                     "sc1_score":  null,
+                                     "sc2_pass":  "Pass",
+                                     "sc2_score":  null,
+                                     "has_notes":  true,
+                                     "has_preferred_answer":  true
+                                 }
+                             ]
+}

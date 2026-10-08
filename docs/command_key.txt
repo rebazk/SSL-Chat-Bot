@@ -1,0 +1,79 @@
+SSL Project Demo Command Key
+Mac and Windows quick start
+
+Repository root:
+<repo root after clone>
+
+Open the repo:
+Windows Command Prompt:
+cd /d "C:\path\to\438 SSL Project"
+macOS Terminal:
+cd "/path/to/438 SSL Project"
+
+Fastest weekend launcher from repo root:
+Mac: ./run-mac.sh beacon
+Or double-click Start-Beacon.command after running chmod +x Start-Beacon.command
+Windows: Start-Beacon.cmd
+
+One-time Python dependency for better PDF extraction:
+py -m pip install --user pypdf
+
+Refresh webpage snapshots:
+py .\src\refresh_webpages.py
+
+Refresh one webpage source only:
+py .\src\refresh_webpages.py --source-id ssl_web_002
+
+Dry-run the Python refresh:
+py .\src\refresh_webpages.py --dry-run
+
+PowerShell webpage refresh fallback:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Refresh-Webpages.ps1"
+
+Build the corpus and cached index:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Build-Corpus.ps1"
+
+Start Beacon BOT (UI):
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Start-Beacon.ps1"
+
+Check whether Beacon BOT can find Python:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Start-Beacon.ps1" -CheckOnly
+
+If Beacon BOT cannot find Python automatically:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Start-Beacon.ps1" -PythonPath "C:\Path\To\Python\python.exe"
+
+Ask a question from cmd.exe:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Ask-SSL.ps1" -Question "What is the Sustainable Solutions Lab, and what does it focus on?"
+
+Ask with JSON output:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Ask-SSL.ps1" -Question "Who is the current director of the Sustainable Solutions Lab?" -Json
+
+Run the official 10-question benchmark:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Run-Demo.ps1" -QuestionsPath "eval\phase1_demo_questions.json"
+
+Run the Phase 2 32-question candidate set:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Run-Demo.ps1" -QuestionsPath "eval\phase2_eval_32_candidate.json"
+
+Run the 50-question evaluation set:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Run-Demo.ps1" -QuestionsPath "eval\question_coverage_50.json"
+
+Run the all-PDF evaluation set:
+powershell -NoProfile -ExecutionPolicy Bypass -File ".\src\Run-Demo.ps1" -QuestionsPath "eval\question_coverage_all_pdfs.json"
+
+Beacon BOT URL after startup:
+http://127.0.0.1:8765
+
+Primary live demo questions:
+1. What is the Sustainable Solutions Lab, and what does it focus on?
+2. Who is the current director of the Sustainable Solutions Lab?
+3. How are "Voices that Matter" and "Views that Matter" different in the kind of evidence or perspective they provide?
+4. What concerns does the East Boston resilience work raise about climate adaptation, gentrification, and displacement?
+
+Safe backup questions:
+1. What kinds of funding mechanisms are discussed in SSL's climate resilience financing work?
+2. What are some of the governance or policy changes recommended for adapting Boston's built environment to increased flooding?
+3. What does the SSL report say about the Massachusetts Municipal Vulnerability Preparedness (MVP) Program in the Greater Boston region?
+
+Optional stretch questions now covered by the repaired all-PDF benchmark:
+1. According to "Critical approaches to climate-induced migration research and solutions," what factors shape climate-induced migration patterns?
+2. What kinds of solutions does the migration paper propose for climate-induced migration?

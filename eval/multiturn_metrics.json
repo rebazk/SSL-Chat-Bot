@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-05-13T16:52:20Z",
+  "base_url": "http://127.0.0.1:8765",
+  "input": "eval/multiturn_regression_sample.json",
+  "results_md": "eval/multiturn_regression_results.md",
+  "total_checks": 26,
+  "passed": 26,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "elapsed_sec": 29.77,
+  "latency_ms": {
+    "mean": 1145.12,
+    "p50": 1067.25,
+    "p95": 2853.53,
+    "min": 4.31,
+    "max": 5100.07
+  },
+  "latency_sample_count": 26,
+  "guardrail_turns": 1,
+  "guardrail_passed": 1,
+  "http_errors": 0,
+  "notes": "Latency is round-trip POST /api/ask until JSON parse succeeds; excludes failed requests."
+}
