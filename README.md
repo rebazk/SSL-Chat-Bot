@@ -59,8 +59,6 @@ SSL PDFs + webpage snapshots
 | `eval/` | Question sets, benchmark outputs, automated metrics, and review records |
 | `docs/` | Project documentation, manual scoring, failure analysis, and visual reports |
 | `tests/` | API and smoke-test scripts |
-| `hpc/` | Cluster/Slurm evaluation notes |
-| `slides/` | Project presentations and visual assets |
 
 ## Getting started
 
@@ -207,7 +205,3 @@ Beacon BOT was developed as part of a **CS 438/638 team project** focused on imp
 ## Acknowledgments
 
 Developed for the Sustainable Solutions Lab research-assistant project at the **University of Massachusetts Boston**. The repository includes team project work, SSL public source materials, and feedback/evaluation documents. Refer to the project materials for individual team contributions and reviewer attribution.
-
-## License
-
-No license file was identified in the provided repository snapshot. Add a `LICENSE` file if the project owners intend to permit reuse or redistribution under a specific license. Rights to third-party publications and assets remain with their respective owners.
