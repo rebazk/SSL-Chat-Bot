@@ -1,0 +1,72 @@
+Project path:
+C:\Users\tonys\OneDrive - University of Massachusetts Boston\Desktop\Current Projects\438 SSL Project\438-SSL-Project-Team-5-BOTs
+
+Full command list for this project
+==================================
+
+Setup
+-----
+Set-ExecutionPolicy -Scope Process Bypass
+py -m pip install --user pypdf
+py -m pip install --user -r requirements.txt
+
+Core pipeline commands
+----------------------
+py .\src\refresh_webpages.py
+py .\src\refresh_webpages.py --source-id ssl_web_002
+py .\src\refresh_webpages.py --dry-run
+.\src\Refresh-Webpages.ps1
+.\src\Build-Corpus.ps1
+.\src\Ask-SSL.ps1 -Question "What is the Sustainable Solutions Lab, and what does it focus on?"
+.\src\Ask-SSL.ps1 -Question "..." -Top 5 -Json
+
+Beacon BOT (UI)
+---------------
+.\src\Start-Beacon.ps1
+.\src\Start-Beacon.ps1 -CheckOnly
+.\src\Start-Beacon.ps1 -PythonPath "C:\Path\To\Python\python.exe"
+Start-Beacon.cmd
+python src/serve_ui.py
+python src/serve_ui.py --host 127.0.0.1 --port 8765
+
+Evaluation / benchmark commands
+-------------------------------
+.\src\Run-Demo.ps1 -QuestionsPath ".\eval\phase1_demo_questions.json"
+.\src\Run-Demo.ps1 -QuestionsPath "eval/question_coverage_50.json"
+.\src\Run-Demo.ps1 -QuestionsPath "eval/question_coverage_all_pdfs.json"
+.\src\Run-Demo.ps1 -QuestionsPath "eval/phase2_eval_32_candidate.json"
+python src/eval_text_metrics.py --results-md eval/phase2_eval_32_candidate_results.md --out-json eval/text_metrics_phase2.json
+.\src\Run-Text-Metrics-Batch.ps1
+.\src\Run-LLM-Judge-Jury.ps1 -Mock
+.\src\Run-LLM-Judge-Jury.ps1 -ResultsMd "eval/manualscoring1_postfix_results.md" -OutJson "eval/llm_jury_manualscoring1_postfix.json" -OutMd "eval/llm_jury_manualscoring1_postfix.md"
+python src/run_multiturn_regression.py
+python src/build_eval_metrics.py
+python src/build_eval_metrics.py --no-embed
+python src/build_eval_metrics.py --multiturn-metrics eval/multiturn_metrics.json
+python docs/regenerate_metrics_embed.py
+
+macOS helper (run-mac.sh)
+-------------------------
+chmod +x ./run-mac.sh
+./run-mac.sh refresh
+./run-mac.sh build
+./run-mac.sh ask "What is the Sustainable Solutions Lab, and what does it focus on?"
+./run-mac.sh demo
+./run-mac.sh ui
+./run-mac.sh beacon
+./run-mac.sh all
+
+Cross-platform / bash equivalents
+---------------------------------
+python3 ./src/refresh_webpages.py
+pwsh ./src/Build-Corpus.ps1
+pwsh ./src/Ask-SSL.ps1 -Question "..."
+pwsh ./src/Run-Demo.ps1 -QuestionsPath "./eval/phase1_demo_questions.json"
+
+HPC
+---
+sbatch hpc/submit_phase2_eval.sbatch
+
+Smoke test
+----------
+.\tests\Smoke-BeaconOneQuestion.ps1
